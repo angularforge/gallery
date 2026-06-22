@@ -1,0 +1,20 @@
+<button class="close-btn rounded-full text-base text-center font-normal flex justify-center items-center cursor-pointer transform transition active:scale-95 active:shadow-xs"
+  [ngClass]="{
+  'z-[2] md:rounded-lg hover:bg-[#5d5959b1] text-white md:py-2 md:px-4 p-2': isLightbox(),
+  'h-8 w-8 text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)] hover:bg-[#7b7b7b12] dark:hover:bg-[color:var(--ngx-gallery-hover-dark)]':!isLightbox() }" (click)="onClick()">
+  @if(isLightbox()){
+
+  <section class="hidden md:flex">
+    <ng-icon [name]="icons.resolve(icon())" size="1rem" />
+  </section>
+
+  <section class="md:hidden">
+    <ng-icon [name]="icons.resolve('prev')" size="1rem" />
+  </section>
+
+  <span class="hidden md:flex ml-2">{{btnLabel()}}</span>
+  }
+  @if(!isLightbox()){
+  <ng-icon [name]="icons.resolve(icon())" size="1rem" />
+  }
+</button>

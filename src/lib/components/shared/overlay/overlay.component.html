@@ -1,0 +1,8 @@
+@if(isOpen()){
+  <div (click)="onOverlayClick($event)" class="overlay h-[100dvh] w-screen top-0 left-0  fixed z-50 inset-0 bg-gray-900/50 flex items-center justify-center">
+    <div class="childContainer">
+      <ng-container *ngTemplateOutlet="element()"></ng-container>
+    </div>
+  </div>
+}
+

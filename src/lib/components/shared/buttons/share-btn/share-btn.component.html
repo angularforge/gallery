@@ -1,0 +1,11 @@
+<button (click)="onShareClick()"
+  class="share-btn flex justify-center items-center cursor-pointer z-[2] rounded-full p-2 text-sm text-center font-normal transform transition active:scale-95 active:shadow-xs"
+  [ngClass]="{
+  'text-white hover:bg-[#5d5959b1]' : isLightbox(),
+  'text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)] hover:bg-[#7b7b7b12] dark:hover:bg-[color:var(--ngx-gallery-hover-dark)] md:rounded-lg': !isLightbox(),
+  }">
+  <ng-icon [name]="icons.resolve(icon())" size="1rem" />
+  @if(btnLabel()){
+    <span class="hidden md:flex ml-2 underline font-medium">{{btnLabel()}}</span>
+  }
+</button>

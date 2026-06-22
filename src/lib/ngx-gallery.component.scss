@@ -1,0 +1,536 @@
+.wrapper div:nth-child(1) {
+  grid-area: one;
+}
+
+.wrapper div:nth-child(2) {
+  grid-area: two;
+}
+
+.wrapper div:nth-child(3) {
+  grid-area: three;
+}
+
+.wrapper div:nth-child(4) {
+  grid-area: four;
+}
+
+.wrapper div:nth-child(5) {
+  grid-area: five;
+}
+
+.wrapper div:nth-child(6) {
+  grid-area: six;
+}
+
+.wrapper div:nth-child(7) {
+  grid-area: seven;
+}
+
+.wrapper div:nth-child(8) {
+  grid-area: eight;
+}
+
+.wrapper div:nth-child(9) {
+  grid-area: nine;
+}
+
+.wrapper div:nth-child(10) {
+  grid-area: ten;
+}
+
+
+// Gallery
+:host {
+  display: block;
+  // text-align: center;
+
+  // ── Theme tokens ────────────────────────────────────────────────
+  // Override any of these from the consuming app (e.g. on `ngx-gallery`
+  // or `:root`) to make the gallery's chrome match your project's theme.
+  // Light/dark switching is handled by Tailwind's `dark:` variant; these
+  // variables only control the actual colors used in each mode.
+  --ngx-gallery-surface: #ffffff;                 // panels: dialog, full-gallery, header, toast
+  --ngx-gallery-surface-dark: #111827;            // gray-900
+  --ngx-gallery-text: #111827;                    // primary text (gray-900)
+  --ngx-gallery-text-dark: #f3f4f6;               // gray-100
+  --ngx-gallery-muted: #6b7280;                   // secondary text (gray-500)
+  --ngx-gallery-muted-dark: #9ca3af;              // gray-400
+  --ngx-gallery-border: #e5e7eb;                  // gray-200
+  --ngx-gallery-border-dark: #374151;             // gray-700
+  --ngx-gallery-hover: #f3f4f6;                   // hover bg (gray-100)
+  --ngx-gallery-hover-dark: rgb(255 255 255 / 0.1);
+}
+
+.gallery {
+  grid-template-areas:
+    "one one one one"
+    "two two three three"
+    "four four four four"
+    "five five six six"
+    "seven seven eight eight"
+    "seven seven nine nine"
+    "ten ten ten ten"
+    "eleven eleven twelve twelve"
+    "thirteen thirteen fourteen fourteen"
+    "fifteen fifteen fourteen fourteen"
+    "sixteen sixteen seventeen seventeen"
+    "eighteen eighteen eighteen eighteen"
+    "nineteen nineteen twenty twenty"
+    "twenty-one twenty-one twenty-two twenty-two"
+    "twenty-three twenty-three twenty-three twenty-three"
+    "twenty-four twenty-four twenty-five twenty-five"
+    "twenty-six twenty-six twenty-six twenty-six"
+    "twenty-seven twenty-seven twenty-eight twenty-eight"
+    "twenty-nine twenty-nine twenty-nine twenty-nine"
+    "thirty thirty thirty-one thirty-one"
+    "thirty-two thirty-two thirty-two thirty-two"
+    "thirty-three thirty-three thirty-four thirty-four"
+    "thirty-five thirty-five thirty-five thirty-five"
+    "thirty-six thirty-six thirty-seven thirty-seven"
+    "thirty-eight thirty-eight thirty-eight thirty-eight"
+    "thirty-nine thirty-nine forty forty"
+    "forty-one forty-one forty-two forty-two"
+    "forty-three forty-three forty-three forty-three"
+    "forty-four forty-four forty-five forty-five"
+    "forty-six forty-six forty-six forty-six"
+    "forty-seven forty-seven forty-eight forty-eight"
+    "forty-nine forty-nine forty-nine forty-nine"
+    "fifty fifty fifty-one fifty-one"
+    "fifty-two fifty-two fifty-two fifty-two"
+    "fifty-three fifty-three fifty-four fifty-four"
+    "fifty-five fifty-five fifty-five fifty-five"
+    "fifty-six fifty-six fifty-seven fifty-seven"
+    "fifty-eight fifty-eight fifty-eight fifty-eight"
+    "fifty-nine fifty-nine sixty sixty"
+    "sixty-one sixty-one sixty-two sixty-two"
+    "sixty-three sixty-three sixty-three sixty-three"
+    "sixty-four sixty-four sixty-five sixty-five"
+    "sixty-six sixty-six sixty-six sixty-six"
+    "sixty-seven sixty-seven sixty-eight sixty-eight"
+    "sixty-nine sixty-nine sixty-nine sixty-nine"
+    "seventy seventy seventy-one seventy-one"
+    "seventy-two seventy-two seventy-two seventy-two"
+    "seventy-three seventy-three seventy-four seventy-four"
+    "seventy-five seventy-five seventy-five seventy-five"
+    "seventy-six seventy-six seventy-seven seventy-seven"
+    "seventy-eight seventy-eight seventy-eight seventy-eight"
+    "seventy-nine seventy-nine eighty eighty"
+    "eighty-one eighty-one eighty-two eighty-two"
+    "eighty-three eighty-three eighty-three eighty-three"
+    "eighty-four eighty-four eighty-five eighty-five"
+    "eighty-six eighty-six eighty-six eighty-six"
+    "eighty-seven eighty-seven eighty-eight eighty-eight"
+    "eighty-nine eighty-nine eighty-nine eighty-nine"
+    "ninety ninety ninety-one ninety-one"
+    "ninety-two ninety-two ninety-two ninety-two"
+    "ninety-three ninety-three ninety-four ninety-four"
+    "ninety-five ninety-five ninety-five ninety-five"
+    "ninety-six ninety-six ninety-seven ninety-seven"
+    "ninety-eight ninety-eight ninety-eight ninety-eight"
+    "ninety-nine ninety-nine one-hundred one-hundred";
+
+  div:nth-child(1) {
+    grid-area: one;
+  }
+
+  div:nth-child(2) {
+    grid-area: two;
+  }
+
+  div:nth-child(3) {
+    grid-area: three;
+  }
+
+  div:nth-child(4) {
+    grid-area: four;
+  }
+
+  div:nth-child(5) {
+    grid-area: five;
+  }
+
+  div:nth-child(6) {
+    grid-area: six;
+  }
+
+  div:nth-child(7) {
+    grid-area: seven;
+  }
+
+  div:nth-child(8) {
+    grid-area: eight;
+  }
+
+  div:nth-child(9) {
+    grid-area: nine;
+  }
+
+  div:nth-child(10) {
+    grid-area: ten;
+  }
+
+  div:nth-child(11) {
+    grid-area: eleven;
+  }
+
+  div:nth-child(12) {
+    grid-area: twelve;
+  }
+
+  div:nth-child(13) {
+    grid-area: thirteen;
+  }
+
+  div:nth-child(14) {
+    grid-area: fourteen;
+  }
+
+  div:nth-child(15) {
+    grid-area: fifteen;
+  }
+
+  div:nth-child(16) {
+    grid-area: sixteen;
+  }
+
+  div:nth-child(17) {
+    grid-area: seventeen;
+  }
+
+  div:nth-child(18) {
+    grid-area: eighteen;
+  }
+
+  div:nth-child(19) {
+    grid-area: nineteen;
+  }
+
+  div:nth-child(20) {
+    grid-area: twenty;
+  }
+
+  div:nth-child(21) {
+    grid-area: twenty-one;
+  }
+
+  div:nth-child(22) {
+    grid-area: twenty-two;
+  }
+
+  div:nth-child(23) {
+    grid-area: twenty-three;
+  }
+
+  div:nth-child(24) {
+    grid-area: twenty-four;
+  }
+
+  div:nth-child(25) {
+    grid-area: twenty-five;
+  }
+
+  div:nth-child(26) {
+    grid-area: twenty-six;
+  }
+
+  div:nth-child(27) {
+    grid-area: twenty-seven;
+  }
+
+  div:nth-child(28) {
+    grid-area: twenty-eight;
+  }
+
+  div:nth-child(29) {
+    grid-area: twenty-nine;
+  }
+
+  div:nth-child(30) {
+    grid-area: thirty;
+  }
+
+  div:nth-child(31) {
+    grid-area: thirty-one;
+  }
+
+  div:nth-child(32) {
+    grid-area: thirty-two;
+  }
+
+  div:nth-child(33) {
+    grid-area: thirty-three;
+  }
+
+  div:nth-child(34) {
+    grid-area: thirty-four;
+  }
+
+  div:nth-child(35) {
+    grid-area: thirty-five;
+  }
+
+  div:nth-child(36) {
+    grid-area: thirty-six;
+  }
+
+  div:nth-child(37) {
+    grid-area: thirty-seven;
+  }
+
+  div:nth-child(38) {
+    grid-area: thirty-eight;
+  }
+
+  div:nth-child(39) {
+    grid-area: thirty-nine;
+  }
+
+  div:nth-child(40) {
+    grid-area: forty;
+  }
+
+  div:nth-child(41) {
+    grid-area: forty-one;
+  }
+
+  div:nth-child(42) {
+    grid-area: forty-two;
+  }
+
+  div:nth-child(43) {
+    grid-area: forty-three;
+  }
+
+  div:nth-child(44) {
+    grid-area: forty-four;
+  }
+
+  div:nth-child(45) {
+    grid-area: forty-five;
+  }
+
+  div:nth-child(46) {
+    grid-area: forty-six;
+  }
+
+  div:nth-child(47) {
+    grid-area: forty-seven;
+  }
+
+  div:nth-child(48) {
+    grid-area: forty-eight;
+  }
+
+  div:nth-child(49) {
+    grid-area: forty-nine;
+  }
+
+  div:nth-child(50) {
+    grid-area: fifty;
+  }
+
+  div:nth-child(51) {
+    grid-area: fifty-one;
+  }
+
+  div:nth-child(52) {
+    grid-area: fifty-two;
+  }
+
+  div:nth-child(53) {
+    grid-area: fifty-three;
+  }
+
+  div:nth-child(54) {
+    grid-area: fifty-four;
+  }
+
+  div:nth-child(55) {
+    grid-area: fifty-five;
+  }
+
+  div:nth-child(56) {
+    grid-area: fifty-six;
+  }
+
+  div:nth-child(57) {
+    grid-area: fifty-seven;
+  }
+
+  div:nth-child(58) {
+    grid-area: fifty-eight;
+  }
+
+  div:nth-child(59) {
+    grid-area: fifty-nine;
+  }
+
+  div:nth-child(60) {
+    grid-area: sixty;
+  }
+
+  div:nth-child(61) {
+    grid-area: sixty-one;
+  }
+
+  div:nth-child(62) {
+    grid-area: sixty-two;
+  }
+
+  div:nth-child(63) {
+    grid-area: sixty-three;
+  }
+
+  div:nth-child(64) {
+    grid-area: sixty-four;
+  }
+
+  div:nth-child(65) {
+    grid-area: sixty-five;
+  }
+
+  div:nth-child(66) {
+    grid-area: sixty-six;
+  }
+
+  div:nth-child(67) {
+    grid-area: sixty-seven;
+  }
+
+  div:nth-child(68) {
+    grid-area: sixty-eight;
+  }
+
+  div:nth-child(69) {
+    grid-area: sixty-nine;
+  }
+
+  div:nth-child(70) {
+    grid-area: seventy;
+  }
+
+  div:nth-child(71) {
+    grid-area: seventy-one;
+  }
+
+  div:nth-child(72) {
+    grid-area: seventy-two;
+  }
+
+  div:nth-child(73) {
+    grid-area: seventy-three;
+  }
+
+  div:nth-child(74) {
+    grid-area: seventy-four;
+  }
+
+  div:nth-child(75) {
+    grid-area: seventy-five;
+  }
+
+  div:nth-child(76) {
+    grid-area: seventy-six;
+  }
+
+  div:nth-child(77) {
+    grid-area: seventy-seven;
+  }
+
+  div:nth-child(78) {
+    grid-area: seventy-eight;
+  }
+
+  div:nth-child(79) {
+    grid-area: seventy-nine;
+  }
+
+  div:nth-child(80) {
+    grid-area: eighty;
+  }
+
+  div:nth-child(81) {
+    grid-area: eighty-one;
+  }
+
+  div:nth-child(82) {
+    grid-area: eighty-two;
+  }
+
+  div:nth-child(83) {
+    grid-area: eighty-three;
+  }
+
+  div:nth-child(84) {
+    grid-area: eighty-four;
+  }
+
+  div:nth-child(85) {
+    grid-area: eighty-five;
+  }
+
+  div:nth-child(86) {
+    grid-area: eighty-six;
+  }
+
+  div:nth-child(87) {
+    grid-area: eighty-seven;
+  }
+
+  div:nth-child(88) {
+    grid-area: eighty-eight;
+  }
+
+  div:nth-child(89) {
+    grid-area: eighty-nine;
+  }
+
+  div:nth-child(90) {
+    grid-area: ninety;
+  }
+
+  div:nth-child(91) {
+    grid-area: ninety-one;
+  }
+
+  div:nth-child(92) {
+    grid-area: ninety-two;
+  }
+
+  div:nth-child(93) {
+    grid-area: ninety-three;
+  }
+
+  div:nth-child(94) {
+    grid-area: ninety-four;
+  }
+
+  div:nth-child(95) {
+    grid-area: ninety-five;
+  }
+
+  div:nth-child(96) {
+    grid-area: ninety-six;
+  }
+
+  div:nth-child(97) {
+    grid-area: ninety-seven;
+  }
+
+  div:nth-child(98) {
+    grid-area: ninety-eight;
+  }
+
+  div:nth-child(99) {
+    grid-area: ninety-nine;
+  }
+
+  div:nth-child(100) {
+    grid-area: one-hundred;
+  }
+}
+
+:host {
+  height: 100%;
+  width: 100%;
+}

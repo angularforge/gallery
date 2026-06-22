@@ -1,0 +1,107 @@
+<!-- 💻 desktop -->
+<div *desktop="true" class="wrapper relative grid overflow-hidden" [ngStyle]="{
+          'grid-template-areas': style().templateAreas,
+          'grid-template-columns':style().columns,
+          'grid-template-rows':style().rows,
+          'border-radius':style().border,
+          'height':style().height,
+          'width':style().width,
+          'gap':style().gap,
+         }" [ngClass]="{'hidden': !allImagesLoaded() && galleryImagesMaxItems().length > 0}">
+
+  @for(image of galleryImagesMaxItems(); track $index;){
+  <picture class="relative overflow-hidden">
+    <gallery-image [image]="image" objectFit="cover" [isInteractive]="true"
+      (click)=" this.options()?.fullGallery ? openFullGallery(image,$index):galleryImageClick(image,$index)"
+      (imageLoad)="onImageLoad($index)" (imageError)="onImageError($index)" />
+
+  </picture>
+  }
+  @if(allImagesLoaded() || galleryImagesMaxItems().length === 0){
+  @for(filler of fillers();track $index){
+  <picture>
+    <image-filler />
+  </picture>
+  }
+  }
+  @if(options()?.showAllPicturesBtn && options()?.fullGallery && allImagesLoaded()){
+  <all-pictures-btn class="absolute" [ngClass]="allPicturesBtnPosition()" (click)="openFullGallery()" />
+  }
+</div>
+
+@if(!allImagesLoaded()){
+<div *desktop="true" class="wrapper relative grid overflow-hidden" [ngStyle]="{
+    'grid-template-areas': style().templateAreas,
+    'grid-template-columns':style().columns,
+    'grid-template-rows':style().rows,
+    'border-radius':style().border,
+    'height':style().height,
+    'width':style().width,
+    'gap':style().gap,
+   }">
+
+  @for(image of galleryImagesMaxItems(); track $index;){
+  <picture class="relative overflow-hidden">
+    <image-skeleton />
+  </picture>
+  }
+
+  @if(!allImagesLoaded() && galleryImagesMaxItems().length !== 0){
+  @for(skeleton of fillers(); track $index;){
+  <picture>
+    <image-skeleton />
+  </picture>
+  }
+  }
+</div>
+}
+
+<!-- 📱 mobile -->
+@if(galleryImages().length === 0){
+<div *mobile="true" class="wrapper relative" [ngStyle]="{'height':style().height,'width':style().width}">
+  <picture>
+    <image-filler />
+  </picture>
+</div>
+}
+@if(!isHorizontalGalleryLoaded() && galleryImages().length > 0){
+<div *mobile="true" class="wrapper relative" [ngStyle]="{'height':style().height,'width':style().width}">
+  <picture>
+    <image-skeleton />
+  </picture>
+</div>
+}
+@if(galleryImages().length > 0){
+<div *mobile="true" horizontal-gallery [ngStyle]="{'height':style().height,'width':style().width}"
+  [totalImageCount]="totalImageCount()" [galleryImages]="galleryImages()" [isLightbox]="false" objectFit="cover"
+  [currentIndex]="currentIndex()" (scroll)="updateCurrentIndex($event.index)"
+  (galleryImageClick)="this.options()?.fullGallery ? openFullGallery() : galleryImageClick($event.image,$event.index)"
+  [wasReset]="wasReset()" (firstImageLoaded)="horizontalGalleryLoaded($event)"
+  [ngClass]="{'preload': !isHorizontalGalleryLoaded()}">
+</div>
+}
+<!-- 🖼️ full gallery -->
+@if(showFullGallery()){
+<full-gallery (slideDownAnimationDone)="slideDownAnimationDone()" [galleryImages]="galleryImages()"
+  [isOpen]="isFullGalleryOpen()" (close)="dismissFullGallery()" (share)="openDialogShare()"
+  (fullGalleryImageClick)="galleryImageClick($event.image,$event.index)" [isOverlayOpen]="isFullGalleryOverlayOpen()"
+  (closeOverlay)="closeFullGalleryOverlay()" [currentImageIndex]="currentIndex()" [isLightBoxOpen]="isLightboxOpen()"
+  [isDialogShareOpen]="isOverlayOpen()" />
+}
+<!-- 💡 lightbox -->
+@if(isLightboxOverlayOpen()){
+<lightbox [options]="options()" [currentLightboxImage]="currentLightboxImage()" [totalImageCount]="totalImageCount()"
+  [isToScrolling]="isToScrolling()" [galleryImages]="galleryImages()" [currentIndex]="currentIndex()"
+  [isOpen]="isLightboxOpen()" (close)="dismissLightbox()" (next)="onNext()" (prev)="onPrev()" (share)="openDialogShare()"
+  (scroll)="updateCurrentLightboxImage($event)" [isOverlayOpen]="isLightboxOverlayOpen()"
+  (closeOverlay)="closeLightboxOverlay()" [isFirstElement]="isFirstElement()" [isLastElement]="isLastElement()"
+  [isDialogShareOpen]="isOverlayOpen()" />
+}
+<!-- 🪟 dialog share -->
+@if(isOverlayOpen()){
+<overlay [element]="dialogShare" (clickOutSide)="dismissDialogShare()" [isOpen]="isOverlayOpen()" />
+<ng-template #dialogShare>
+  <dialog-share [isOpen]="isDialogShareOpen()" (closeOverlay)="closeOverlay()" (clickCloseBtn)="dismissDialogShare()"
+    [options]="dialogShareOptions()" [galleryImages]="galleryImages()" />
+</ng-template>
+}

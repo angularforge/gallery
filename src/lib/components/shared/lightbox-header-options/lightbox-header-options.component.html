@@ -1,0 +1,40 @@
+<div class="w-full py-4 px-6 md:pt-10 md:px-10 md:pb-5">
+  <div class="header-lightbox-container flex justify-between items-center w-full gap-4">
+
+    <close-btn (click)="onClose()" [icon]="'close'" [btnLabel]="'close' | translate" [isLightbox]="true" />
+
+    @if (options()?.showCount) {
+      <counter [currentIndex]="currentIndex()" [totalImageCount]="totalImageCount()" [isLightbox]="true" />
+    }
+
+    <div class="flex items-center gap-3 ml-auto">
+
+      @if (options()?.allowDownload && currentImage()?.src) {
+        <a
+          [href]="currentImage()!.src"
+          [download]="currentImage()!.alt || 'image'"
+          [attr.aria-label]="'download' | translate"
+          class="flex items-center justify-center text-white hover:text-gray-300 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
+        >
+          <ng-icon [name]="icons.resolve('download')" size="1rem" />
+        </a>
+      }
+
+      @for (action of options()?.customActions ?? []; track $index) {
+        <button
+          [disabled]="action.disabled ?? false"
+          [attr.aria-label]="action.label"
+          [title]="action.label"
+          class="flex items-center justify-center text-white hover:text-gray-300 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded disabled:opacity-40 disabled:cursor-not-allowed"
+          (click)="action.onClick($event, currentIndex())"
+          [innerHTML]="action.icon"
+        ></button>
+      }
+
+      @if (options()?.showShareBtn) {
+        <share-btn [icon]="'share'" [isLightbox]="true" (share)="onShare()" />
+      }
+
+    </div>
+  </div>
+</div>

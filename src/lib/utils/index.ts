@@ -1,0 +1,7 @@
+export { defaultDialogShareOptions } from './defaultDialogShareOptions.utils'
+export { defaultNgxGalleryImage } from './defaultNgxGalleryImage.utils'
+export { defaultCustomStyles } from './defaultCustomStyles.utils'
+export { defaultOptions } from './defaultOptions.utils'
+export { Distributions } from './distribution.utils'
+export { ImageLoader } from './imageLoader.utils'
+export { GALLERY_ICONS, ICON_NAME_MAP } from './icons.utils'

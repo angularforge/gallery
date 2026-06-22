@@ -1,0 +1,7 @@
+<div class="gallery-header-options z-10 px-6 flex  sticky top-0 justify-between items-center h-16 bg-[color:var(--ngx-gallery-surface)] dark:bg-[color:var(--ngx-gallery-surface-dark)]">
+  <close-btn (click)="onClose()" [icon]="'prev'" [isLightbox]="false" />
+
+  @if(showShareBtn()){
+  <share-btn [icon]="'share'" [isLightbox]="false" [btnLabel]="'share' | translate" (share)="onShare()"/>
+  }
+</div>

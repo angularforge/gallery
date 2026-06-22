@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "declaration": false,
+    "declarationMap": false,
+    "inlineSources": false,
+    "sourceMap": false
+  },
+  "exclude": [
+    "**/*.spec.ts"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ]
+}

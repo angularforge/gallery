@@ -1,0 +1,10 @@
+<gallery
+  [galleryImages]="galleryImages()"
+  [style]="style()"
+  [options]="options()"
+  [dialogShareOptions]="options().dialogShareOptions"
+  (imageChange)="imageChange.emit($event)"
+  (lightboxOpen)="lightboxOpen.emit($event)"
+  (lightboxClose)="lightboxClose.emit()"
+  (lightboxImageChange)="lightboxImageChange.emit($event)"
+/>

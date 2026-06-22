@@ -1,0 +1,6 @@
+<span class="count text-white font-normal"
+  [ngClass]="{
+  'bg-[#5d5959b1] px-2 py-1 rounded-md text-xs': !isLightbox(),
+  ' text-base ':isLightbox()}">
+  {{currentIndex()}} / {{totalImageCount()}}
+</span>

@@ -1,0 +1,15 @@
+@if(!isFirstElement()){
+  <button
+    class="btn-lightbox-carousel md:flex absolute hidden justify-center items-center z-10 text-white text-center bg-black hover:bg-[#5d5959b1] cursor-pointer btn-prev left-6 text-2xl rounded-full p-4 border-2 border-gray-400 transform transition active:scale-95 active:shadow-xs"
+    (click)="onPrev()">
+    <ng-icon [name]="icons.resolve('prev')" size="0.75rem" />
+  </button>
+}
+@if(!isLastElement()){
+  <button
+    class="btn-lightbox-carousel md:flex absolute hidden justify-center items-center z-10  text-white text-center bg-black hover:bg-[#5d5959b1] cursor-pointer btn-next right-6 text-2xl rounded-full p-4 border-2 border-gray-400 transform transition active:scale-95 active:shadow-xs"
+    (click)="onNext()">
+    <ng-icon [name]="icons.resolve('next')" size="0.75rem" />
+
+  </button>
+}

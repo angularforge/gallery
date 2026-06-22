@@ -1,0 +1,24 @@
+<picture class="lightbox-img flex relative overflow-hidden w-full h-full">
+  <div #carousel (scroll)="onScroll()"
+    class="carousel scrollbar-hidden flex overflow-x-scroll  snap-x snap-mandatory scroll-auto"
+    [ngClass]="{'gap-4':isLightbox()}">
+    @for(image of galleryImages();track $index){
+    <div class="overflow-hidden shrink-0 w-full h-full snap-center snap-always flex flex-col justify-between ">
+
+      <gallery-image class="overflow-hidden w-full h-full" [image]="image" loading="lazy" [objectFit]="objectFit()" [isInteractive]="!isLightbox()"
+        (click)="onGalleryImageClick(image,$index)" (imageLoad)="onImageLoad($index)" (imageError)="onImageError($index)" />
+
+      @if(isLightbox()){
+      <image-caption class="caption-lightbox-container flex justify-center items-center h-36 w-full"
+        [caption]="image.caption" />
+      }
+
+    </div>
+    }
+  </div>
+  @if(!isLightbox()){
+  <div class="absolute bottom-4 right-4">
+    <counter [currentIndex]="currentIndex()" [totalImageCount]="totalImageCount()" [isLightbox]="false" />
+  </div>
+  }
+</picture>

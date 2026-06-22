@@ -1,0 +1,12 @@
+@if(visible()){
+  <div
+  class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-[color:var(--ngx-gallery-surface)] dark:bg-[color:var(--ngx-gallery-surface-dark)] shadow-lg px-4 py-2 flex items-center gap-3 transition-opacity duration-300 border border-[color:var(--ngx-gallery-border)] dark:border-[color:var(--ngx-gallery-border-dark)] rounded-lg"
+  [class.opacity-100]="visible()"
+  [class.opacity-0]="!visible()"
+>
+  <div class="h-4 w-4 rounded-full bg-green-700 flex items-center justify-center text-white">
+    <ng-icon [name]="icons.resolve('check')" size="0.75rem" />
+  </div>
+  <span class="text-sm font-normal text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)]">{{ message() | translate }}</span>
+</div>
+}

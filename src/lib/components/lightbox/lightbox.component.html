@@ -1,0 +1,84 @@
+
+<overlay [element]="lightbox" [isOpen]="isOverlayOpen()"/>
+
+<ng-template #lightbox>
+  <div
+    [@slideAnimation]="isOpen() ? 'slideUp' : 'slideDown'"
+    (@slideAnimation.start)="slideAnimationStart($event)"
+    (@slideAnimation.done)="slideAnimationDone($event)"
+    class="cover fixed inset-0 bg-[color:var(--ngx-gallery-surface)] dark:bg-[color:var(--ngx-gallery-surface-dark)] z-30"
+    (keydown)="onKeydown($event)" tabindex="0"
+    >
+
+    @if (showLightbox()) {
+      <div
+        [@fadeAnimation]
+        class="lightbox z-50 flex flex-col md:justify-center justify-start items-center fixed top-0 left-0 w-screen h-screen bg-black"
+        (mouseenter)="onMouseEnter()"
+        (mouseleave)="onMouseLeave()"
+      >
+
+        <lightbox-header-options
+          class="w-full"
+          [options]="options()"
+          [currentImage]="currentLightboxImage()"
+          [currentIndex]="index"
+          [totalImageCount]="totalImageCount()"
+          (close)="onCloseLightbox()"
+          (share)="onShare()"
+        />
+
+        @if (options()?.showControls) {
+          <controls
+            class="flex justify-center items-center fixed z-10 w-screen"
+            (prev)="onPrev()"
+            (next)="onNext()"
+            [isFirstElement]="isFirstElement() && !options()?.infinityLoop"
+            [isLastElement]="isLastElement() && !options()?.infinityLoop"
+          />
+        }
+
+        @if (isMobile()) {
+          <div
+            horizontal-gallery
+            class="lightbox-img flex relative overflow-hidden w-full h-[calc(100dvh-80px)] md:h-full mt-4"
+            (scroll)="onScroll($event)"
+            [currentIndex]="currentIndex()"
+            [galleryImages]="galleryImages()"
+            [isLightbox]="true"
+            objectFit="contain"
+            [isToScrolling]="isToScrolling()"
+          ></div>
+        }
+
+        @if (!isMobile()) {
+          <div class="lightbox-image-content grid grid-rows-[1fr_auto] h-[calc(100dvh-100px)] w-full">
+            @if (fadeAnimationControl()) {
+              <lightbox-gallery
+                [@fadeAnimation]
+                class="lightbox-img flex relative overflow-hidden h-full w-full justify-center"
+                [currentLightboxImage]="currentLightboxImage()"
+              />
+              <image-caption
+                [@fadeAnimation]
+                class="caption-lightbox-container flex justify-center items-center h-36 w-full"
+                [caption]="currentLightboxImage().caption"
+              />
+            }
+          </div>
+        }
+
+        @if (options()?.showBullets) {
+          <af-gallery-bullets
+            class="w-full"
+            [totalImageCount]="totalImageCount()"
+            [currentIndex]="currentIndex()"
+            (select)="onBulletSelect($event)"
+          />
+        }
+
+      </div>
+    }
+
+  </div>
+</ng-template>

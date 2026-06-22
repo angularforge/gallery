@@ -1,0 +1,31 @@
+
+<div class="relative h-full w-full group">
+  @if (image()?.src) {
+  <img
+  [loading]="image()?.loading || 'auto'"
+  [height]="image()?.height"
+  [srcset]="image()?.srcset"
+  [width]="image()?.width"
+  [ngSrc]="image()!.src"
+  [alt]="image()?.alt"
+
+  [ngClass]="{
+    'cursor-pointer': isInteractive(),
+    'object-contain': objectFit() === 'contain',
+    'object-cover': objectFit() === 'cover',
+    'object-fill': objectFit() === 'fill',
+    'object-none': objectFit() === 'none',
+    }"
+
+    class="overflow-hidden w-full h-full !static z-10" (click)="isInteractive() ? onClick() : null"
+    (load)="onImageLoad()"
+    (error)="onImageError()">
+  }
+
+    @if(isInteractive()){
+      <!-- image overlay hover -->
+      <div class="absolute inset-0 bg-black bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none"></div>
+    }
+
+</div>
+

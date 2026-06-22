@@ -1,0 +1,38 @@
+@keyframes scale-out {
+  from {
+    transform: scale(0.5);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0.5);
+  }
+}
+
+.scale-out {
+  opacity: 1;
+  animation: scale-out 150ms forwards;
+}
+
+.scale-in {
+  opacity: 0;
+  animation: scale-in 150ms forwards;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+}

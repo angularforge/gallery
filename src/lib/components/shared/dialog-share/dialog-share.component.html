@@ -1,0 +1,93 @@
+<div class="bg-[color:var(--ngx-gallery-surface)] dark:bg-[color:var(--ngx-gallery-surface-dark)] text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)] rounded-2xl shadow-lg max-w-[568px] w-full p-6"
+  [@slideAnimation]="isOpen() ? 'slideUp' : 'slideDown'" (@slideAnimation.done)="onCloseShare($event)">
+
+  <div class="flex flex-col items-start mb-6">
+    <close-btn (click)="onClickCloseBtn()" [isLightbox]="false" [icon]="'close'" class="absolute left-4 top-4" />
+
+    <h2 class=" mt-10 text-2xl font-semibold text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)]">{{title()}}</h2>
+
+  </div>
+
+
+  <div class="flex items-center my-6">
+    @if(picture()){
+    <img [ngSrc]="picture()" height="64" width="64" [alt]="title()"
+      class="w-16 h-16 rounded-lg mr-4 object-cover">
+    }
+    <div>
+      @if(options()?.subtitle){
+      <p class="text-sm font-medium text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)]">{{options()?.subtitle}}</p>
+      }
+      @if(description()){
+      <p class="text-sm text-[color:var(--ngx-gallery-muted)] dark:text-[color:var(--ngx-gallery-muted-dark)]">{{description()}}</p>
+      }
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4">
+
+    @for(shareButton of options()?.shareButtons;track $index){
+    @switch (shareButton) {
+    @case ('copy') {
+    <button (click)="copyToClipboard()"
+      class="min-w-64 min-h-12 w-full flex gap-1 items-center p-2 border border-[color:var(--ngx-gallery-border)] dark:border-[color:var(--ngx-gallery-border-dark)] rounded-lg text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)] hover:bg-[color:var(--ngx-gallery-hover)] dark:hover:bg-[color:var(--ngx-gallery-hover-dark)]">
+      <ng-icon [name]="icons.resolve('copy')" size="1.25rem" />
+      <span class="text-sm font-medium text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)]">{{'copy' | translate}}</span>
+    </button>
+    }
+    @case ('facebook') {
+    <a href="https://facebook.com/sharer/sharer.php?u={{ href() }}" target="_blank"
+      class="min-w-64 min-h-12 w-full flex gap-1 items-center p-2 border border-[color:var(--ngx-gallery-border)] dark:border-[color:var(--ngx-gallery-border-dark)] rounded-lg text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)] hover:bg-[color:var(--ngx-gallery-hover)] dark:hover:bg-[color:var(--ngx-gallery-hover-dark)]">
+      <ng-icon [name]="icons.resolve('facebook')" size="1.25rem" />
+      <span class="text-sm font-medium text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)]">Facebook</span>
+    </a>
+    }
+    @case ('whatsapp'){
+    <a href="https://wa.me/?text={{ href() }}" target="_blank"
+      class="min-w-64 min-h-12 w-full flex gap-1 items-center p-2 border border-[color:var(--ngx-gallery-border)] dark:border-[color:var(--ngx-gallery-border-dark)] rounded-lg text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)] hover:bg-[color:var(--ngx-gallery-hover)] dark:hover:bg-[color:var(--ngx-gallery-hover-dark)]">
+      <ng-icon [name]="icons.resolve('whatsapp')" size="1.25rem" />
+      <span class="text-sm font-medium text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)]">Whatsapp</span>
+    </a>
+    }
+    @case ('twitter'){
+    <a href="https://x.com/intent/tweet/?url={{ href() }}" target="_blank"
+      class="min-w-64 min-h-12 w-full flex gap-1 items-center p-2 border border-[color:var(--ngx-gallery-border)] dark:border-[color:var(--ngx-gallery-border-dark)] rounded-lg text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)] hover:bg-[color:var(--ngx-gallery-hover)] dark:hover:bg-[color:var(--ngx-gallery-hover-dark)]">
+      <ng-icon [name]="icons.resolve('twitter')" size="1.25rem" />
+      <span class="text-sm font-medium text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)]">Twitter</span>
+    </a>
+    }
+    @case ('telegram'){
+    <a href="https://t.me/share/url?url={{ href() }}" target="_blank"
+      class="min-w-64 min-h-12 w-full flex gap-1 items-center p-2 border border-[color:var(--ngx-gallery-border)] dark:border-[color:var(--ngx-gallery-border-dark)] rounded-lg text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)] hover:bg-[color:var(--ngx-gallery-hover)] dark:hover:bg-[color:var(--ngx-gallery-hover-dark)]">
+      <ng-icon [name]="icons.resolve('telegram')" size="1.25rem" />
+      <span class="text-sm font-medium text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)]">Telegram</span>
+    </a>
+    }
+    @case ('email'){
+    <a href="mailto:{{emailLink()}}" target="_blank"
+      class="min-w-64 min-h-12 w-full flex gap-1 items-center p-2 border border-[color:var(--ngx-gallery-border)] dark:border-[color:var(--ngx-gallery-border-dark)] rounded-lg text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)] hover:bg-[color:var(--ngx-gallery-hover)] dark:hover:bg-[color:var(--ngx-gallery-hover-dark)]">
+      <ng-icon [name]="icons.resolve('email')" size="1.25rem" />
+      <span class="text-sm font-medium text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)]">{{'email'|translate}}</span>
+    </a>
+    }
+    @case ('linkedin'){
+    <a href="http://www.linkedin.com/shareArticle?mini=true&url={{href()}}" target="_blank"
+      class="min-w-64 min-h-12 w-full flex gap-1 items-center p-2 border border-[color:var(--ngx-gallery-border)] dark:border-[color:var(--ngx-gallery-border-dark)] rounded-lg text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)] hover:bg-[color:var(--ngx-gallery-hover)] dark:hover:bg-[color:var(--ngx-gallery-hover-dark)]">
+      <ng-icon [name]="icons.resolve('linkedin')" size="1.25rem" />
+      <span class="text-sm font-medium text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)]">Linkedin</span>
+    </a>
+    }
+    @case ('instagram'){
+    <a href="https://www.instagram.com/?url={{href()}}" target="_blank"
+      class="min-w-64 min-h-12 w-full flex gap-1 items-center p-2 border border-[color:var(--ngx-gallery-border)] dark:border-[color:var(--ngx-gallery-border-dark)] rounded-lg text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)] hover:bg-[color:var(--ngx-gallery-hover)] dark:hover:bg-[color:var(--ngx-gallery-hover-dark)]">
+      <ng-icon [name]="icons.resolve('instagram')" size="1.25rem" />
+      <span class="text-sm font-medium text-[color:var(--ngx-gallery-text)] dark:text-[color:var(--ngx-gallery-text-dark)]">Instagram</span>
+    </a>
+    }
+    }
+    }
+
+  </div>
+
+  <toast [isOpen]="showToast()" (close)="setShowToast(false)" />
+</div>

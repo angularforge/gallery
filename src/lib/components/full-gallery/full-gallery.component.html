@@ -1,0 +1,22 @@
+<overlay [element]="fullGallery" [isOpen]="isOverlayOpen()" />
+
+<ng-template #fullGallery>
+  <div class="gallery-lightbox-container absolute inline-block top-0 right-0 w-full p-0 md:pb-12 bg-[color:var(--ngx-gallery-surface)] dark:bg-[color:var(--ngx-gallery-surface-dark)] h-full z-40"
+    [@slideAnimation]="isOpen() ? 'slideUp' : 'slideDown'" (@slideAnimation.done)="slideAnimationDone($event)" (@slideAnimation.start)="slideAnimationStart($event)">
+
+    <full-gallery-header-options [showShareBtn]="true" (close)="onCloseFullGallery()" (share)="onShare()" />
+
+    @if(showFullGallery()){
+    <div @fadeAnimation class="scrollbar-hidden overflow-y-scroll md:px-20 md:py-10 w-full h-full">
+      <section  class="gallery gap-2 grid grid-cols-4 mx-auto w-full h-auto md:max-w-[750px] md:pb-0 pb-[100px]">
+        @for(image of galleryImages(); track $index){
+          <picture #listItem>
+            <gallery-image [image]="image" objectFit="cover" [isInteractive]="true" (click)="onClick(image,$index)"/>
+          </picture>
+        }
+      </section>
+    </div>
+    }
+
+  </div>
+</ng-template>

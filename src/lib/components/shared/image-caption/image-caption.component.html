@@ -1,0 +1,30 @@
+<div
+  class="caption-lightbox-container flex flex-col justify-center items-start md:items-center w-full mx-auto p-6  md:mx-24 max-w-[760px]">
+  @if(caption()){
+  <div>
+    <p class=" text-white md:text-center font-light text-left text-sm md:line-clamp-2 line-clamp-3">
+      {{caption()}}</p>
+  </div>
+
+  <div class="translate grid grid-flow-col gap-2 justify-center items-start text-[12px] text-white mt-3">
+
+    <ng-icon [name]="icons.resolve('translate')" size="1rem" />
+
+    <div>
+      @if(isTranslated()){
+      <span class="mr-2">{{ 'autoTranslate' | translate}}</span>
+      }
+      <button (click)="translate()"
+        class="bg-white border-gray-400 text-gray-400 border-2 px-2 rounded-md text-[12px] underline underline-offset-1">
+        @if(isTranslated()){
+        <p>{{'translateOriginal'|translate}}</p>
+        }
+        @else {
+        <p>{{'translateTo'|translate}} {{language()}}</p>
+        }
+      </button>
+    </div>
+
+  </div>
+  }
+</div>
