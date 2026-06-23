@@ -1,4 +1,4 @@
-export interface NgxGalleryImage {
+export interface GalleryImage {
   caption?: string;
   src: string;
   alt?: string;
@@ -22,3 +22,9 @@ export interface AlternativeSlugs {
   de: string
   pt: string
 }
+
+/**
+ * @deprecated Use `GalleryImage` instead.
+ * Will be removed in the next major version.
+ */
+export type NgxGalleryImage = GalleryImage;

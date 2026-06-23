@@ -5,6 +5,26 @@
   "description": "Feature-rich, accessible Angular image gallery with lightbox, full-gallery, and share support.",
   "entries": [
     {
+      "version": "2.0.0",
+      "date": "2026-06-23",
+      "changes": {
+        "breaking": [
+          "NgxGalleryComponent renamed to GalleryComponent — HTML selector (<ngx-gallery>) and runtime behaviour unchanged",
+          "NgxGalleryImage renamed to GalleryImage",
+          "NgxGalleryOptions renamed to GalleryOptions"
+        ],
+        "deprecated": [
+          "NgxGalleryComponent, NgxGalleryImage, NgxGalleryOptions re-exported as @deprecated aliases; will be removed in v3.0.0"
+        ],
+        "chore": [
+          "Renamed ngx-gallery.component.ts → gallery.component.ts",
+          "Renamed ngxGalleryImage.interface.ts → gallery-image.interface.ts",
+          "Renamed ngxGalleryOptions.interface.ts → gallery-options.interface.ts",
+          "Renamed ngx-gallery.service.ts → gallery.service.ts"
+        ]
+      }
+    },
+    {
       "version": "1.0.1",
       "date": "2026-06-23",
       "changes": {

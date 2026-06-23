@@ -1,4 +1,4 @@
-/** Icon families the gallery can swap between via `NgxGalleryOptions.iconFamily`. */
+/** Icon families the gallery can swap between via `GalleryOptions.iconFamily`. */
 export type IconFamily = 'heroicons' | 'lucide' | 'bootstrap';
 
 /** Semantic UI icon roles used across the gallery. */

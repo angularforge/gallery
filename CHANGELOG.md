@@ -6,6 +6,34 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-06-23
+
+### Breaking Changes
+
+- `NgxGalleryComponent` renamed to `GalleryComponent` — the class name no longer carries the `Ngx` prefix. The HTML selector (`<ngx-gallery>`) and all runtime behaviour are unchanged.
+- `NgxGalleryImage` renamed to `GalleryImage`
+- `NgxGalleryOptions` renamed to `GalleryOptions`
+
+### Deprecated (removed in v3.0.0)
+
+All legacy `Ngx`-prefixed names are re-exported as deprecated aliases and will compile with a `@deprecated` JSDoc warning until the next major release:
+
+```ts
+// These still work but emit a deprecation warning in IDEs
+import { NgxGalleryComponent, NgxGalleryImage, NgxGalleryOptions } from '@angularforge/gallery';
+```
+
+### Source Changes
+
+- Renamed `ngx-gallery.component.ts` → `gallery.component.ts`
+- Renamed `ngxGalleryImage.interface.ts` → `gallery-image.interface.ts`
+- Renamed `ngxGalleryOptions.interface.ts` → `gallery-options.interface.ts`
+- Renamed `ngx-gallery.service.ts` → `gallery.service.ts`
+
+### Migration
+
+See [MIGRATION.md](./MIGRATION.md) for the full step-by-step migration guide.
+
 ## [1.0.1] - 2026-06-23
 
 ### Documentation

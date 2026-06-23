@@ -5,8 +5,8 @@ import { CloseBtnComponent, ShareBtnComponent } from '../buttons';
 import { CounterComponent } from '../counter/counter.component';
 import { TranslatePipe } from '../../../pipes';
 import { IconService } from '../../../services';
-import { NgxGalleryImage } from '../../../interface/ngxGalleryImage.interface';
-import { NgxGalleryOptions } from '../../../interface';
+import { GalleryImage } from '../../../interface/gallery-image.interface';
+import { GalleryOptions } from '../../../interface';
 
 @Component({
   selector: 'lightbox-header-options',
@@ -33,13 +33,13 @@ export class LightboxHeaderOptionsComponent {
   get currentIndex(): Signal<number> { return this._currentIndex; }
   @Input() set currentIndex(v: number) { this._currentIndex.set(v); }
 
-  private readonly _currentImage = signal<NgxGalleryImage | undefined>(undefined);
-  get currentImage(): Signal<NgxGalleryImage | undefined> { return this._currentImage; }
-  @Input() set currentImage(v: NgxGalleryImage | undefined) { this._currentImage.set(v); }
+  private readonly _currentImage = signal<GalleryImage | undefined>(undefined);
+  get currentImage(): Signal<GalleryImage | undefined> { return this._currentImage; }
+  @Input() set currentImage(v: GalleryImage | undefined) { this._currentImage.set(v); }
 
-  private readonly _options = signal<NgxGalleryOptions | undefined>(undefined);
-  get options(): Signal<NgxGalleryOptions | undefined> { return this._options; }
-  @Input() set options(v: NgxGalleryOptions | undefined) { this._options.set(v); }
+  private readonly _options = signal<GalleryOptions | undefined>(undefined);
+  get options(): Signal<GalleryOptions | undefined> { return this._options; }
+  @Input() set options(v: GalleryOptions | undefined) { this._options.set(v); }
 
   @Output() readonly close = new EventEmitter<void>();
   @Output() readonly share = new EventEmitter<void>();

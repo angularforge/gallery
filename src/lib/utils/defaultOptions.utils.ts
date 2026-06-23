@@ -1,9 +1,9 @@
-import { NgxGalleryOptions } from "../interface";
+import { GalleryOptions } from "../interface";
 import { defaultCustomStyles } from "./defaultCustomStyles.utils";
 import { defaultDialogShareOptions } from "./defaultDialogShareOptions.utils";
 
 
-export const defaultOptions: NgxGalleryOptions = {
+export const defaultOptions: GalleryOptions = {
   dialogShareOptions:defaultDialogShareOptions,
   allPictureBtnPosition: 'bottom-right',
   customLayout: defaultCustomStyles,

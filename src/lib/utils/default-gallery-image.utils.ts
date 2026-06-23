@@ -1,6 +1,6 @@
-import { NgxGalleryImage } from "../interface";
+import { GalleryImage } from "../interface";
 
-export const defaultNgxGalleryImage: Array<NgxGalleryImage> = [{
+export const defaultGalleryImage: Array<GalleryImage> = [{
   src: '',
   alt: '',
   caption: '',

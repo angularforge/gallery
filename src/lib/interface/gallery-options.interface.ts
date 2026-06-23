@@ -4,7 +4,7 @@ import { IconFamily } from "../types";
 import { CustomStyles } from "./customStyles.interface";
 import { DialogShareOptions } from "./dialogShare.interface";
 
-export interface NgxGalleryOptions {
+export interface GalleryOptions {
   // Visibility
   showAllPicturesBtn?: boolean;
   showControls?: boolean;
@@ -25,7 +25,7 @@ export interface NgxGalleryOptions {
   allPictureBtnPosition?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
   // Navigation
-  /** @deprecated Deshabilitado en esta versión: el valor se ignora y la navegación nunca cicla. */
+  /** @deprecated Disabled in this version: value is ignored and navigation never wraps. */
   infinityLoop?: boolean;
   closeOnBackdropClick?: boolean;
 
@@ -53,3 +53,9 @@ interface Layout {
   distribution: Distribution;
   orientation: Orientation;
 }
+
+/**
+ * @deprecated Use `GalleryOptions` instead.
+ * Will be removed in the next major version.
+ */
+export type NgxGalleryOptions = GalleryOptions;

@@ -1,22 +1,22 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxGalleryComponent } from './ngx-gallery.component';
+import { GalleryComponent } from './gallery.component';
 import { TranslationService } from './services';
 
-describe('NgxGalleryComponent lang input reactivity (zoneless, consumer scenario)', () => {
-  let fixture: ComponentFixture<NgxGalleryComponent>;
+describe('GalleryComponent lang input reactivity (zoneless, consumer scenario)', () => {
+  let fixture: ComponentFixture<GalleryComponent>;
   let service: TranslationService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgxGalleryComponent],
+      imports: [GalleryComponent],
       providers: [provideZonelessChangeDetection()],
     }).compileComponents();
 
     service = TestBed.inject(TranslationService);
 
-    fixture = TestBed.createComponent(NgxGalleryComponent);
+    fixture = TestBed.createComponent(GalleryComponent);
     fixture.componentRef.setInput('lang', 'en');
     await fixture.whenStable();
   });

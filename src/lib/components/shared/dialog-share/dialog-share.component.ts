@@ -4,7 +4,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { NgIcon } from '@ng-icons/core';
 
 import { ToastComponent } from '../toast/toast.component';
-import { DialogShareOptions, NgxGalleryImage } from '../../../interface';
+import { DialogShareOptions, GalleryImage } from '../../../interface';
 import { SLIDE_ANIMATION } from '../../../constants';
 import { CloseBtnComponent } from '../buttons';
 import { TranslatePipe } from '../../../pipes';
@@ -30,9 +30,9 @@ export class DialogShareComponent {
   get options(): Signal<DialogShareOptions | undefined> { return this._options; }
   @Input() set options(v: DialogShareOptions | undefined) { this._options.set(v); }
 
-  private readonly _galleryImages = signal<Array<NgxGalleryImage>>([]);
-  get galleryImages(): Signal<Array<NgxGalleryImage>> { return this._galleryImages; }
-  @Input() set galleryImages(v: Array<NgxGalleryImage> | undefined) { this._galleryImages.set(v ?? []); }
+  private readonly _galleryImages = signal<Array<GalleryImage>>([]);
+  get galleryImages(): Signal<Array<GalleryImage>> { return this._galleryImages; }
+  @Input() set galleryImages(v: Array<GalleryImage> | undefined) { this._galleryImages.set(v ?? []); }
 
   private readonly _isOpen = signal<boolean>(false);
   get isOpen(): Signal<boolean> { return this._isOpen; }

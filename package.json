@@ -1,6 +1,6 @@
 {
   "name": "@angularforge/gallery",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "A feature-rich, accessible Angular image gallery library with lightbox, full-gallery, and share support. Built with Angular signals and OnPush change detection.",
   "keywords": [
     "angular",

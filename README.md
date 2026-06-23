@@ -72,9 +72,9 @@ Explore and customize the gallery in real time using the interactive [Playground
 - [Tailwind CSS Setup (required)](#tailwind-css-setup-required)
 - [Quick Start](#quick-start)
 - [API Reference](#api-reference)
-  - [NgxGalleryComponent Inputs](#ngxgallerycomponent-inputs)
-  - [NgxGalleryImage](#ngxgalleryimage)
-  - [NgxGalleryOptions](#ngxgalleryoptions)
+  - [GalleryComponent Inputs](#gallerycomponent-inputs)
+  - [GalleryImage](#galleryimage)
+  - [GalleryOptions](#galleryoptions)
   - [DialogShareOptions](#dialogshareoptions)
   - [CustomStyles](#customstyles)
   - [Layout Distributions](#layout-distributions)
@@ -257,7 +257,7 @@ translate) are rendered with [`@ng-icons`](https://ng-icons.github.io/ng-icons/)
 switched between **three families** via the `iconFamily` option:
 
 ```typescript
-options: NgxGalleryOptions = {
+options: GalleryOptions = {
   iconFamily: "lucide", // 'heroicons' (default) | 'lucide' | 'bootstrap'
 };
 ```
@@ -280,18 +280,18 @@ dedicated official-style brand SVGs. All of them are monochrome and follow the t
 ```typescript
 // app.component.ts
 import { Component } from "@angular/core";
-import { NgxGalleryComponent, NgxGalleryImage } from "@angularforge/gallery";
+import { GalleryComponent, GalleryImage } from "@angularforge/gallery";
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [NgxGalleryComponent],
+  imports: [GalleryComponent],
   template: `
     <ngx-gallery [galleryImages]="images" [options]="options" lang="en" />
   `,
 })
 export class AppComponent {
-  images: NgxGalleryImage[] = [
+  images: GalleryImage[] = [
     {
       src: "https://example.com/photo1.jpg",
       alt: "Mountain view",
@@ -325,16 +325,16 @@ export class AppComponent {
 
 ## API Reference
 
-### NgxGalleryComponent Inputs
+### GalleryComponent Inputs
 
 | Input           | Type                 | Default   | Description                |
 | --------------- | -------------------- | --------- | -------------------------- |
-| `galleryImages` | `NgxGalleryImage[]`  | `[]`      | Array of images to display |
-| `options`       | `NgxGalleryOptions`  | see below | Gallery configuration      |
+| `galleryImages` | `GalleryImage[]`  | `[]`      | Array of images to display |
+| `options`       | `GalleryOptions`  | see below | Gallery configuration      |
 | `dialog`        | `DialogShareOptions` | see below | Share dialog configuration |
 | `lang`          | `'en' \| 'es'`       | `'en'`    | UI language                |
 
-### NgxGalleryComponent Outputs
+### GalleryComponent Outputs
 
 | Output                | Type     | Description                                         |
 | --------------------- | -------- | --------------------------------------------------- |
@@ -355,10 +355,10 @@ export class AppComponent {
 
 ---
 
-### NgxGalleryImage
+### GalleryImage
 
 ```typescript
-interface NgxGalleryImage {
+interface GalleryImage {
   src: string; // Required — image URL
   width: number; // Required — intrinsic width in px
   height: number; // Required — intrinsic height in px
@@ -376,10 +376,10 @@ interface NgxGalleryImage {
 
 ---
 
-### NgxGalleryOptions
+### GalleryOptions
 
 ```typescript
-interface NgxGalleryOptions {
+interface GalleryOptions {
   // Visibility
   showAllPicturesBtn?: boolean; // Show "View all photos" button — default: true
   showControls?: boolean; // Show prev/next arrows in lightbox — default: true
@@ -459,7 +459,7 @@ interface DialogShareOptions {
 
 ### CustomStyles
 
-Use `customLayout` inside `NgxGalleryOptions` to define a fully custom CSS Grid layout:
+Use `customLayout` inside `GalleryOptions` to define a fully custom CSS Grid layout:
 
 ```typescript
 interface CustomStyles {
@@ -532,7 +532,7 @@ Both `horizontal` and `vertical` orientations are available for each distributio
 ### Custom Layout
 
 ```typescript
-options: NgxGalleryOptions = {
+options: GalleryOptions = {
   customLayout: {
     orientation: "horizontal",
     templateAreas: '"hero hero thumb1" "hero hero thumb2"',
@@ -555,7 +555,7 @@ options: NgxGalleryOptions = {
 ### Lightbox with Controls
 
 ```typescript
-options: NgxGalleryOptions = {
+options: GalleryOptions = {
   layout: { distribution: "1/4", orientation: "vertical" },
   showControls: true,
   showCount: true,
@@ -598,7 +598,7 @@ Supported keys: `share`, `close`, `copy`, `email`, `download`, `title`, `subtitl
 ### Auto Play
 
 ```typescript
-options: NgxGalleryOptions = {
+options: GalleryOptions = {
   autoPlay: true,
   autoPlayInterval: 4000, // change every 4 seconds
   autoPlayPauseOnHover: true, // pause when the user hovers
@@ -611,7 +611,7 @@ options: NgxGalleryOptions = {
 ### Navigation Bullets
 
 ```typescript
-options: NgxGalleryOptions = {
+options: GalleryOptions = {
   showBullets: true,
 };
 ```
@@ -619,12 +619,12 @@ options: NgxGalleryOptions = {
 ### Download Button
 
 ```typescript
-options: NgxGalleryOptions = {
+options: GalleryOptions = {
   allowDownload: true,
 };
 ```
 
-When the user clicks the download button, the browser triggers a native download of `NgxGalleryImage.src` using `NgxGalleryImage.alt` as the filename.
+When the user clicks the download button, the browser triggers a native download of `GalleryImage.src` using `GalleryImage.alt` as the filename.
 
 ### Custom Actions
 
@@ -688,9 +688,9 @@ export class AppComponent {
 src/
 ├── public-api.ts                          ← Public API surface
 └── lib/
-    ├── ngx-gallery.component.ts           ← Root entry component (registers icons)
-    ├── ngx-gallery.component.html
-    ├── ngx-gallery.component.scss
+    ├── gallery.component.ts           ← Root entry component (registers icons)
+    ├── gallery.component.html
+    ├── gallery.component.scss
     ├── components/
     │   ├── index.ts
     │   ├── gallery/                       ← Main gallery grid + state hub
@@ -732,8 +732,8 @@ src/
     │   ├── customStyles.interface.ts
     │   ├── dialogShare.interface.ts
     │   ├── image-object.interface.ts
-    │   ├── ngxGalleryImage.interface.ts
-    │   └── ngxGalleryOptions.interface.ts
+    │   ├── gallery-image.interface.ts
+    │   └── gallery-options.interface.ts
     ├── pipes/
     │   ├── index.ts
     │   └── translate.pipe.ts              ← Reactive `translate` pipe (impure)
@@ -746,7 +746,7 @@ src/
     │   ├── index.ts
     │   ├── device.service.ts              ← Mobile/desktop breakpoint (signals)
     │   ├── icon.service.ts                ← Resolves icon family → ng-icon name
-    │   ├── ngx-gallery.service.ts
+    │   ├── gallery.service.ts
     │   ├── overlay-history.service.ts     ← Back-button overlay history stack
     │   ├── scroll.service.ts              ← Body scroll lock/unlock
     │   └── translation.service.ts         ← Inline en/es translations (signals)
@@ -760,7 +760,7 @@ src/
         ├── brand-icons.utils.ts          ← Custom social/brand SVG icons
         ├── defaultCustomStyles.utils.ts
         ├── defaultDialogShareOptions.utils.ts
-        ├── defaultNgxGalleryImage.utils.ts
+        ├── defaultGalleryImage.utils.ts
         ├── defaultOptions.utils.ts
         ├── distribution.utils.ts
         ├── icons.utils.ts                ← GALLERY_ICONS + role→name map
@@ -773,9 +773,9 @@ src/
 ### Component Tree
 
 ```
-NgxGalleryComponent  (selector: ngx-gallery)
+GalleryComponent  (selector: ngx-gallery)          ← public entry component
 │   providers: provideIcons(GALLERY_ICONS)   ← all ng-icons registered once here
-└── GalleryComponent  (state hub — signals, computed, methods)
+└── GalleryGridComponent  (state hub — signals, computed, methods)
     │   providers: OverlayHistoryService      ← back-button stack, scoped per gallery
     ├── GalleryImageComponent × N        (OnPush, NgOptimizedImage)
     ├── ImageFillerComponent × N         (empty slots)
@@ -816,7 +816,7 @@ NgxGalleryComponent  (selector: ngx-gallery)
 | Feature                          | Status                                     |
 | -------------------------------- | ------------------------------------------ |
 | Keyboard navigation (← → Escape) | Supported in lightbox and dialog           |
-| `alt` text on all images         | Passed through via `NgxGalleryImage.alt`   |
+| `alt` text on all images         | Passed through via `GalleryImage.alt`   |
 | `NgOptimizedImage` (`ngSrc`)     | Enforces explicit dimensions, improves LCP |
 | Focus trap in lightbox/dialog    | Partial — to be improved in v1.1           |
 | ARIA roles on modal overlays     | Planned for v1.1                           |
@@ -825,7 +825,7 @@ NgxGalleryComponent  (selector: ngx-gallery)
 Provide descriptive `alt` text for every image. Screen readers will read this text to visually impaired users:
 
 ```typescript
-images: NgxGalleryImage[] = [
+images: GalleryImage[] = [
   {
     src: 'mountain.jpg',
     alt: 'Snow-capped mountain peak at sunrise with pink sky', // descriptive!

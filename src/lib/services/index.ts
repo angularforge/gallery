@@ -1,5 +1,5 @@
 export { TranslationService } from './translation.service'
-export { NgxGalleryService } from './ngx-gallery.service'
+export { GalleryService } from './gallery.service'
 export { DeviceService } from './device.service'
 export { ScrollService } from './scroll.service'
 export { IconService } from './icon.service'
