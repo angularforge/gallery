@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, EventEmitter, inject, Inp
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NgClass, NgStyle } from '@angular/common';
 
-import { NgxGalleryImage, NgxGalleryOptions, DialogShareOptions } from '../../interface';
+import { GalleryImage, GalleryOptions, DialogShareOptions } from '../../interface';
 import { Style } from '../../schema';
 import { AllPicturesBtnComponent } from '../shared/buttons';
 import {
@@ -49,24 +49,24 @@ export class GalleryComponent {
   get dialogShareOptions(): Signal<DialogShareOptions | undefined> { return this._dialogShareOptions; }
   @Input() set dialogShareOptions(v: DialogShareOptions | undefined) { this._dialogShareOptions.set(v); }
 
-  private readonly _galleryImages = signal<Array<NgxGalleryImage>>([]);
-  get galleryImages(): Signal<Array<NgxGalleryImage>> { return this._galleryImages; }
-  @Input({ required: true }) set galleryImages(v: Array<NgxGalleryImage>) { this._galleryImages.set(v); }
+  private readonly _galleryImages = signal<Array<GalleryImage>>([]);
+  get galleryImages(): Signal<Array<GalleryImage>> { return this._galleryImages; }
+  @Input({ required: true }) set galleryImages(v: Array<GalleryImage>) { this._galleryImages.set(v); }
 
   private readonly _style = signal<Style>(undefined as any);
   get style(): Signal<Style> { return this._style; }
   @Input({ required: true }) set style(v: Style) { this._style.set(v); }
 
-  private readonly _options = signal<NgxGalleryOptions | undefined>(undefined);
-  get options(): Signal<NgxGalleryOptions | undefined> { return this._options; }
-  @Input() set options(v: NgxGalleryOptions | undefined) { this._options.set(v); }
+  private readonly _options = signal<GalleryOptions | undefined>(undefined);
+  get options(): Signal<GalleryOptions | undefined> { return this._options; }
+  @Input() set options(v: GalleryOptions | undefined) { this._options.set(v); }
 
   @Output() readonly imageChange = new EventEmitter<number>();
   @Output() readonly lightboxOpen = new EventEmitter<number>();
   @Output() readonly lightboxClose = new EventEmitter<void>();
   @Output() readonly lightboxImageChange = new EventEmitter<number>();
 
-  readonly currentLightboxImage = signal<NgxGalleryImage>({ src: '', alt: '', caption: '', width: ZERO, height: ZERO });
+  readonly currentLightboxImage = signal<GalleryImage>({ src: '', alt: '', caption: '', width: ZERO, height: ZERO });
   readonly isFullGalleryOverlayOpen = signal<boolean>(false);
   readonly isLightboxOverlayOpen = signal<boolean>(false);
   readonly imageLoadStates = signal<Array<boolean>>([]);
@@ -106,7 +106,7 @@ export class GalleryComponent {
   private fullGalleryHistoryId = -1;
   private dialogShareHistoryId = -1;
 
-  galleryImageClick(image: NgxGalleryImage, index: number): void {
+  galleryImageClick(image: GalleryImage, index: number): void {
     const wasOpen = this.isLightboxOverlayOpen();
     this.updateCurrentLightboxImage(image);
     this.updateCurrentIndex(index);
@@ -118,7 +118,7 @@ export class GalleryComponent {
     if (!wasOpen) this.lightboxHistoryId = this.overlayHistory.open(() => this.closeLightbox());
   }
 
-  openFullGallery(image?: NgxGalleryImage, index?: number): void {
+  openFullGallery(image?: GalleryImage, index?: number): void {
     const wasOpen = this.isFullGalleryOpen();
     this.showFullGallery.set(true);
     this.isFullGalleryOpen.set(true);
@@ -270,7 +270,7 @@ export class GalleryComponent {
     }
   }
 
-  updateCurrentLightboxImage(image: NgxGalleryImage): void {
+  updateCurrentLightboxImage(image: GalleryImage): void {
     this.currentLightboxImage.set(image);
   }
 

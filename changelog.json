@@ -1,0 +1,62 @@
+{
+  "$schema": "./changelog.schema.json",
+  "package": "@angularforge/gallery",
+  "name": "Gallery",
+  "description": "Feature-rich, accessible Angular image gallery with lightbox, full-gallery, and share support.",
+  "entries": [
+    {
+      "version": "2.0.0",
+      "date": "2026-06-23",
+      "changes": {
+        "breaking": [
+          "NgxGalleryComponent renamed to GalleryComponent — HTML selector (<ngx-gallery>) and runtime behaviour unchanged",
+          "NgxGalleryImage renamed to GalleryImage",
+          "NgxGalleryOptions renamed to GalleryOptions"
+        ],
+        "deprecated": [
+          "NgxGalleryComponent, NgxGalleryImage, NgxGalleryOptions re-exported as @deprecated aliases; will be removed in v3.0.0"
+        ],
+        "chore": [
+          "Renamed ngx-gallery.component.ts → gallery.component.ts",
+          "Renamed ngxGalleryImage.interface.ts → gallery-image.interface.ts",
+          "Renamed ngxGalleryOptions.interface.ts → gallery-options.interface.ts",
+          "Renamed ngx-gallery.service.ts → gallery.service.ts"
+        ]
+      }
+    },
+    {
+      "version": "1.0.1",
+      "date": "2026-06-23",
+      "changes": {
+        "documentation": [
+          "Updated README with playground link, visual feature section, and screenshot placeholders",
+          "Improved formatting consistency, corrected code-block markup, and removed accidental character prefixes from headings"
+        ]
+      }
+    },
+    {
+      "version": "1.0.0",
+      "date": "2026-06-01",
+      "changes": {
+        "added": [
+          "NgxGalleryComponent — standalone, signals-first Angular image gallery",
+          "Lightbox overlay with keyboard navigation (← → Esc) and swipe gestures on touch devices",
+          "Full-gallery overlay displaying all images in a scrollable grid",
+          "50+ preconfigured layout distributions via GalleryLayout",
+          "Social sharing via Web Share API with clipboard-copy fallback",
+          "GalleryConfig with customisable ARIA labels, icon-set overrides, and CSS theming tokens",
+          "Dark mode support via CSS custom properties — no extra setup required",
+          "GALLERY_PROVIDERS helper and provideGallery() for application-level configuration",
+          "OnPush change detection throughout for optimal render performance",
+          "SSR compatibility — no document or window access at module load time",
+          "WCAG 2.2 AA compliance: keyboard focus traps, focus restoration, live-region announcements",
+          "Bundled icon support: Bootstrap Icons, Heroicons, Lucide (configurable)",
+          "Angular 22 partial-compilation support"
+        ],
+        "security": [
+          "All user-supplied image URLs and captions sanitised through Angular's DomSanitizer"
+        ]
+      }
+    }
+  ]
+}

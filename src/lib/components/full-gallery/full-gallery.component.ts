@@ -4,7 +4,7 @@ import { AnimationEvent } from '@angular/animations';
 import { GalleryImageComponent, FullGalleryHeaderOptionsComponent, OverlayComponent } from '../shared';
 import { FADE_ANIMATION, SLIDE_ANIMATION } from '../../constants';
 import { ScrollService } from '../../services';
-import { NgxGalleryImage } from '../../interface';
+import { GalleryImage } from '../../interface';
 
 @Component({
     selector: 'full-gallery',
@@ -21,9 +21,9 @@ import { NgxGalleryImage } from '../../interface';
 export class FullGalleryComponent {
   @ViewChildren('listItem') listItems!: QueryList<ElementRef>;
 
-  private readonly _galleryImages = signal<Array<NgxGalleryImage>>([]);
-  get galleryImages(): Signal<Array<NgxGalleryImage>> { return this._galleryImages; }
-  @Input({ required: true }) set galleryImages(v: Array<NgxGalleryImage>) { this._galleryImages.set(v); }
+  private readonly _galleryImages = signal<Array<GalleryImage>>([]);
+  get galleryImages(): Signal<Array<GalleryImage>> { return this._galleryImages; }
+  @Input({ required: true }) set galleryImages(v: Array<GalleryImage>) { this._galleryImages.set(v); }
 
   private readonly _currentImageIndex = signal<number>(0);
   get currentImageIndex(): Signal<number> { return this._currentImageIndex; }
@@ -50,7 +50,7 @@ export class FullGalleryComponent {
   @Input() set shareBtn(v: any) { this._shareBtn.set(v); }
 
   @Output() readonly animationDone = new EventEmitter<AnimationEvent>();
-  @Output() readonly fullGalleryImageClick = new EventEmitter<{ image: NgxGalleryImage, index: number }>();
+  @Output() readonly fullGalleryImageClick = new EventEmitter<{ image: GalleryImage, index: number }>();
   @Output() readonly slideDownAnimationDone = new EventEmitter<void>();
   @Output() readonly closeOverlay = new EventEmitter<void>();
   @Output() readonly close = new EventEmitter<void>();
@@ -112,7 +112,7 @@ export class FullGalleryComponent {
   onSlideDownAnimationDone() {
     this.slideDownAnimationDone.emit();
   }
-  onClick(image: NgxGalleryImage, index: number) {
+  onClick(image: GalleryImage, index: number) {
     this.fullGalleryImageClick.emit({ index, image });
   }
   onShare() {

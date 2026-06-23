@@ -1,4 +1,5 @@
 <div align="center">
+
   <h1>@angularforge/gallery</h1>
   <p>A feature-rich, accessible Angular image gallery library built with **Angular 22 Signals**, **OnPush change detection**, and **standalone components**. Supports lightbox, full-gallery, keyboard navigation, social sharing, and multi-layout grid distributions.</p>
 
@@ -31,6 +32,38 @@
 
 ---
 
+## Playground
+
+Explore and customize the gallery in real time using the interactive [Playground](https://angularforge.com/playground/gallery).
+
+<img src="https://i.imgur.com/tOHTSkx.png" width="100%"/>
+
+## Features
+
+**Devices Views**
+
+**Vertical Orientation**
+
+<div align="center" style="display:flex; justify-content:space-between; align-items:end;">
+
+<img src="https://i.imgur.com/Asju3n3.png" width="60%" />
+<img src="https://i.imgur.com/XNOFmo8.png" width="20%" />
+<img src="https://i.imgur.com/LolakCO.png" width="10%" height="20%" />
+
+</div>
+
+<br/>
+
+**Horizontal Orientation**
+
+<div align="center" style="display:flex; justify-content:space-between; align-items:end;">
+
+<img src="https://i.imgur.com/eH3lLC2.png" width="60%" />
+<img src="https://i.imgur.com/DcN8rAv.png" width="20%" />
+<img src="https://i.imgur.com/iX6Olxl.png" width="10%" height="20%" />
+
+</div>
+
 ## Table of Contents
 
 - [Features](#features)
@@ -39,9 +72,9 @@
 - [Tailwind CSS Setup (required)](#tailwind-css-setup-required)
 - [Quick Start](#quick-start)
 - [API Reference](#api-reference)
-  - [NgxGalleryComponent Inputs](#ngxgallerycomponent-inputs)
-  - [NgxGalleryImage](#ngxgalleryimage)
-  - [NgxGalleryOptions](#ngxgalleryoptions)
+  - [GalleryComponent Inputs](#gallerycomponent-inputs)
+  - [GalleryImage](#galleryimage)
+  - [GalleryOptions](#galleryoptions)
   - [DialogShareOptions](#dialogshareoptions)
   - [CustomStyles](#customstyles)
   - [Layout Distributions](#layout-distributions)
@@ -140,8 +173,8 @@ Add the package to your `content` globs in `tailwind.config.js`:
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/**/*.{html,ts}',
-    './node_modules/@angularforge/gallery/fesm2022/*.mjs', // 👈 scan the library bundle
+    "./src/**/*.{html,ts}",
+    "./node_modules/@angularforge/gallery/fesm2022/*.mjs", // 👈 scan the library bundle
   ],
 };
 ```
@@ -152,7 +185,7 @@ v4 is configured from your CSS entry point with the `@source` directive (no JS c
 
 ```css
 /* styles.css */
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* 👇 scan the library bundle so its utility classes are generated */
 @source '../node_modules/@angularforge/gallery/fesm2022/*.mjs';
@@ -180,7 +213,7 @@ build is configured for.**
 
   ```css
   /* styles.css (Tailwind v4) */
-  @import 'tailwindcss';
+  @import "tailwindcss";
   @custom-variant dark (&:where(.dark, .dark *));
   ```
 
@@ -192,13 +225,13 @@ The gallery's surfaces read their colors from CSS custom properties, so you can 
 match your project's palette by overriding a few variables — no `::ng-deep` or `!important`
 needed. The defaults reproduce the built‑in light/dark look:
 
-| Token | Default (light) | Default (dark) | Used by |
-| --- | --- | --- | --- |
-| `--ngx-gallery-surface` / `--ngx-gallery-surface-dark` | `#ffffff` | `#111827` | dialog / full‑gallery / header / toast backgrounds |
-| `--ngx-gallery-text` / `--ngx-gallery-text-dark` | `#111827` | `#f3f4f6` | primary text & icons |
-| `--ngx-gallery-muted` / `--ngx-gallery-muted-dark` | `#6b7280` | `#9ca3af` | secondary text (description) |
-| `--ngx-gallery-border` / `--ngx-gallery-border-dark` | `#e5e7eb` | `#374151` | borders |
-| `--ngx-gallery-hover` / `--ngx-gallery-hover-dark` | `#f3f4f6` | `rgb(255 255 255 / .1)` | hover backgrounds |
+| Token                                                  | Default (light) | Default (dark)          | Used by                                            |
+| ------------------------------------------------------ | --------------- | ----------------------- | -------------------------------------------------- |
+| `--ngx-gallery-surface` / `--ngx-gallery-surface-dark` | `#ffffff`       | `#111827`               | dialog / full‑gallery / header / toast backgrounds |
+| `--ngx-gallery-text` / `--ngx-gallery-text-dark`       | `#111827`       | `#f3f4f6`               | primary text & icons                               |
+| `--ngx-gallery-muted` / `--ngx-gallery-muted-dark`     | `#6b7280`       | `#9ca3af`               | secondary text (description)                       |
+| `--ngx-gallery-border` / `--ngx-gallery-border-dark`   | `#e5e7eb`       | `#374151`               | borders                                            |
+| `--ngx-gallery-hover` / `--ngx-gallery-hover-dark`     | `#f3f4f6`       | `rgb(255 255 255 / .1)` | hover backgrounds                                  |
 
 Override them wherever the gallery is mounted (or globally on `:root`). Only set what you
 need — usually just the dark surface to match your app's background:
@@ -224,8 +257,8 @@ translate) are rendered with [`@ng-icons`](https://ng-icons.github.io/ng-icons/)
 switched between **three families** via the `iconFamily` option:
 
 ```typescript
-options: NgxGalleryOptions = {
-  iconFamily: 'lucide', // 'heroicons' (default) | 'lucide' | 'bootstrap'
+options: GalleryOptions = {
+  iconFamily: "lucide", // 'heroicons' (default) | 'lucide' | 'bootstrap'
 };
 ```
 
@@ -247,18 +280,18 @@ dedicated official-style brand SVGs. All of them are monochrome and follow the t
 ```typescript
 // app.component.ts
 import { Component } from "@angular/core";
-import { NgxGalleryComponent, NgxGalleryImage } from "@angularforge/gallery";
+import { GalleryComponent, GalleryImage } from "@angularforge/gallery";
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [NgxGalleryComponent],
+  imports: [GalleryComponent],
   template: `
     <ngx-gallery [galleryImages]="images" [options]="options" lang="en" />
   `,
 })
 export class AppComponent {
-  images: NgxGalleryImage[] = [
+  images: GalleryImage[] = [
     {
       src: "https://example.com/photo1.jpg",
       alt: "Mountain view",
@@ -292,16 +325,16 @@ export class AppComponent {
 
 ## API Reference
 
-### NgxGalleryComponent Inputs
+### GalleryComponent Inputs
 
 | Input           | Type                 | Default   | Description                |
 | --------------- | -------------------- | --------- | -------------------------- |
-| `galleryImages` | `NgxGalleryImage[]`  | `[]`      | Array of images to display |
-| `options`       | `NgxGalleryOptions`  | see below | Gallery configuration      |
+| `galleryImages` | `GalleryImage[]`  | `[]`      | Array of images to display |
+| `options`       | `GalleryOptions`  | see below | Gallery configuration      |
 | `dialog`        | `DialogShareOptions` | see below | Share dialog configuration |
 | `lang`          | `'en' \| 'es'`       | `'en'`    | UI language                |
 
-### NgxGalleryComponent Outputs
+### GalleryComponent Outputs
 
 | Output                | Type     | Description                                         |
 | --------------------- | -------- | --------------------------------------------------- |
@@ -322,10 +355,10 @@ export class AppComponent {
 
 ---
 
-### NgxGalleryImage
+### GalleryImage
 
 ```typescript
-interface NgxGalleryImage {
+interface GalleryImage {
   src: string; // Required — image URL
   width: number; // Required — intrinsic width in px
   height: number; // Required — intrinsic height in px
@@ -343,10 +376,10 @@ interface NgxGalleryImage {
 
 ---
 
-### NgxGalleryOptions
+### GalleryOptions
 
 ```typescript
-interface NgxGalleryOptions {
+interface GalleryOptions {
   // Visibility
   showAllPicturesBtn?: boolean; // Show "View all photos" button — default: true
   showControls?: boolean; // Show prev/next arrows in lightbox — default: true
@@ -426,7 +459,7 @@ interface DialogShareOptions {
 
 ### CustomStyles
 
-Use `customLayout` inside `NgxGalleryOptions` to define a fully custom CSS Grid layout:
+Use `customLayout` inside `GalleryOptions` to define a fully custom CSS Grid layout:
 
 ```typescript
 interface CustomStyles {
@@ -499,7 +532,7 @@ Both `horizontal` and `vertical` orientations are available for each distributio
 ### Custom Layout
 
 ```typescript
-options: NgxGalleryOptions = {
+options: GalleryOptions = {
   customLayout: {
     orientation: "horizontal",
     templateAreas: '"hero hero thumb1" "hero hero thumb2"',
@@ -522,7 +555,7 @@ options: NgxGalleryOptions = {
 ### Lightbox with Controls
 
 ```typescript
-options: NgxGalleryOptions = {
+options: GalleryOptions = {
   layout: { distribution: "1/4", orientation: "vertical" },
   showControls: true,
   showCount: true,
@@ -565,7 +598,7 @@ Supported keys: `share`, `close`, `copy`, `email`, `download`, `title`, `subtitl
 ### Auto Play
 
 ```typescript
-options: NgxGalleryOptions = {
+options: GalleryOptions = {
   autoPlay: true,
   autoPlayInterval: 4000, // change every 4 seconds
   autoPlayPauseOnHover: true, // pause when the user hovers
@@ -578,7 +611,7 @@ options: NgxGalleryOptions = {
 ### Navigation Bullets
 
 ```typescript
-options: NgxGalleryOptions = {
+options: GalleryOptions = {
   showBullets: true,
 };
 ```
@@ -586,12 +619,12 @@ options: NgxGalleryOptions = {
 ### Download Button
 
 ```typescript
-options: NgxGalleryOptions = {
+options: GalleryOptions = {
   allowDownload: true,
 };
 ```
 
-When the user clicks the download button, the browser triggers a native download of `NgxGalleryImage.src` using `NgxGalleryImage.alt` as the filename.
+When the user clicks the download button, the browser triggers a native download of `GalleryImage.src` using `GalleryImage.alt` as the filename.
 
 ### Custom Actions
 
@@ -655,9 +688,9 @@ export class AppComponent {
 src/
 ├── public-api.ts                          ← Public API surface
 └── lib/
-    ├── ngx-gallery.component.ts           ← Root entry component (registers icons)
-    ├── ngx-gallery.component.html
-    ├── ngx-gallery.component.scss
+    ├── gallery.component.ts           ← Root entry component (registers icons)
+    ├── gallery.component.html
+    ├── gallery.component.scss
     ├── components/
     │   ├── index.ts
     │   ├── gallery/                       ← Main gallery grid + state hub
@@ -699,8 +732,8 @@ src/
     │   ├── customStyles.interface.ts
     │   ├── dialogShare.interface.ts
     │   ├── image-object.interface.ts
-    │   ├── ngxGalleryImage.interface.ts
-    │   └── ngxGalleryOptions.interface.ts
+    │   ├── gallery-image.interface.ts
+    │   └── gallery-options.interface.ts
     ├── pipes/
     │   ├── index.ts
     │   └── translate.pipe.ts              ← Reactive `translate` pipe (impure)
@@ -713,7 +746,7 @@ src/
     │   ├── index.ts
     │   ├── device.service.ts              ← Mobile/desktop breakpoint (signals)
     │   ├── icon.service.ts                ← Resolves icon family → ng-icon name
-    │   ├── ngx-gallery.service.ts
+    │   ├── gallery.service.ts
     │   ├── overlay-history.service.ts     ← Back-button overlay history stack
     │   ├── scroll.service.ts              ← Body scroll lock/unlock
     │   └── translation.service.ts         ← Inline en/es translations (signals)
@@ -727,7 +760,7 @@ src/
         ├── brand-icons.utils.ts          ← Custom social/brand SVG icons
         ├── defaultCustomStyles.utils.ts
         ├── defaultDialogShareOptions.utils.ts
-        ├── defaultNgxGalleryImage.utils.ts
+        ├── defaultGalleryImage.utils.ts
         ├── defaultOptions.utils.ts
         ├── distribution.utils.ts
         ├── icons.utils.ts                ← GALLERY_ICONS + role→name map
@@ -740,9 +773,9 @@ src/
 ### Component Tree
 
 ```
-NgxGalleryComponent  (selector: ngx-gallery)
+GalleryComponent  (selector: ngx-gallery)          ← public entry component
 │   providers: provideIcons(GALLERY_ICONS)   ← all ng-icons registered once here
-└── GalleryComponent  (state hub — signals, computed, methods)
+└── GalleryGridComponent  (state hub — signals, computed, methods)
     │   providers: OverlayHistoryService      ← back-button stack, scoped per gallery
     ├── GalleryImageComponent × N        (OnPush, NgOptimizedImage)
     ├── ImageFillerComponent × N         (empty slots)
@@ -783,7 +816,7 @@ NgxGalleryComponent  (selector: ngx-gallery)
 | Feature                          | Status                                     |
 | -------------------------------- | ------------------------------------------ |
 | Keyboard navigation (← → Escape) | Supported in lightbox and dialog           |
-| `alt` text on all images         | Passed through via `NgxGalleryImage.alt`   |
+| `alt` text on all images         | Passed through via `GalleryImage.alt`   |
 | `NgOptimizedImage` (`ngSrc`)     | Enforces explicit dimensions, improves LCP |
 | Focus trap in lightbox/dialog    | Partial — to be improved in v1.1           |
 | ARIA roles on modal overlays     | Planned for v1.1                           |
@@ -792,7 +825,7 @@ NgxGalleryComponent  (selector: ngx-gallery)
 Provide descriptive `alt` text for every image. Screen readers will read this text to visually impaired users:
 
 ```typescript
-images: NgxGalleryImage[] = [
+images: GalleryImage[] = [
   {
     src: 'mountain.jpg',
     alt: 'Snow-capped mountain peak at sunrise with pink sky', // descriptive!
@@ -886,6 +919,7 @@ If this library saved you time, consider buying me a coffee:
 ---
 
 ## License
+
 MIT © [AngularForge](https://github.com/angularforge)
 
 ---

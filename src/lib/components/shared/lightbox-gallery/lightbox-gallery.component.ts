@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
-import { NgxGalleryImage } from '../../../interface';
+import { GalleryImage } from '../../../interface';
 import { AnimationEvent } from '@angular/animations';
 import { GalleryImageComponent } from '../gallery-image/gallery-image.component';
 import { FADE_ANIMATION } from '../../../constants';
@@ -16,9 +16,9 @@ import { FADE_ANIMATION } from '../../../constants';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LightboxGalleryComponent {
-  private readonly _currentLightboxImage = signal<NgxGalleryImage>({ src: '', alt: '', caption: '', width: 0, height: 0 });
-  get currentLightboxImage(): Signal<NgxGalleryImage> { return this._currentLightboxImage; }
-  @Input() set currentLightboxImage(v: NgxGalleryImage) { this._currentLightboxImage.set(v); }
+  private readonly _currentLightboxImage = signal<GalleryImage>({ src: '', alt: '', caption: '', width: 0, height: 0 });
+  get currentLightboxImage(): Signal<GalleryImage> { return this._currentLightboxImage; }
+  @Input() set currentLightboxImage(v: GalleryImage) { this._currentLightboxImage.set(v); }
 
   @Output() readonly AnimationEnd = new EventEmitter<AnimationEvent>();
 

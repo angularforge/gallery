@@ -25,7 +25,7 @@ import {
   LightboxHeaderOptionsComponent,
   OverlayComponent,
 } from '../shared';
-import { NgxGalleryImage, LightboxImage, NgxGalleryOptions } from '../../interface';
+import { GalleryImage, LightboxImage, GalleryOptions } from '../../interface';
 import { FADE_ANIMATION, SLIDE_ANIMATION } from '../../constants';
 import { DeviceService, ScrollService } from '../../services';
 
@@ -47,17 +47,17 @@ import { DeviceService, ScrollService } from '../../services';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LightboxComponent implements OnDestroy {
-  private readonly _currentLightboxImage = signal<NgxGalleryImage>({ src: '', alt: '', caption: '', width: 0, height: 0 });
-  get currentLightboxImage(): Signal<NgxGalleryImage> { return this._currentLightboxImage; }
-  @Input() set currentLightboxImage(v: NgxGalleryImage) { this._currentLightboxImage.set(v); }
+  private readonly _currentLightboxImage = signal<GalleryImage>({ src: '', alt: '', caption: '', width: 0, height: 0 });
+  get currentLightboxImage(): Signal<GalleryImage> { return this._currentLightboxImage; }
+  @Input() set currentLightboxImage(v: GalleryImage) { this._currentLightboxImage.set(v); }
 
   private readonly _isDialogShareOpen = signal<boolean>(false);
   get isDialogShareOpen(): Signal<boolean> { return this._isDialogShareOpen; }
   @Input({ required: true }) set isDialogShareOpen(v: boolean) { this._isDialogShareOpen.set(v); }
 
-  private readonly _galleryImages = signal<NgxGalleryImage[]>([]);
-  get galleryImages(): Signal<NgxGalleryImage[]> { return this._galleryImages; }
-  @Input({ required: true }) set galleryImages(v: NgxGalleryImage[]) { this._galleryImages.set(v); }
+  private readonly _galleryImages = signal<GalleryImage[]>([]);
+  get galleryImages(): Signal<GalleryImage[]> { return this._galleryImages; }
+  @Input({ required: true }) set galleryImages(v: GalleryImage[]) { this._galleryImages.set(v); }
 
   private readonly _isToScrolling = signal<boolean>(false);
   get isToScrolling(): Signal<boolean> { return this._isToScrolling; }
@@ -75,9 +75,9 @@ export class LightboxComponent implements OnDestroy {
   get isOpen(): Signal<boolean> { return this._isOpen; }
   @Input() set isOpen(v: boolean) { this._isOpen.set(v); }
 
-  private readonly _options = signal<NgxGalleryOptions | undefined>(undefined);
-  get options(): Signal<NgxGalleryOptions | undefined> { return this._options; }
-  @Input() set options(v: NgxGalleryOptions | undefined) { this._options.set(v); }
+  private readonly _options = signal<GalleryOptions | undefined>(undefined);
+  get options(): Signal<GalleryOptions | undefined> { return this._options; }
+  @Input() set options(v: GalleryOptions | undefined) { this._options.set(v); }
 
   private readonly _isFirstElement = signal<boolean>(false);
   get isFirstElement(): Signal<boolean> { return this._isFirstElement; }

@@ -1,6 +1,6 @@
 import { NgClass, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
-import { NgxGalleryImage } from '../../../interface';
+import { GalleryImage } from '../../../interface';
 
 @Component({
   selector: 'gallery-image',
@@ -19,9 +19,9 @@ export class GalleryImageComponent {
   get isInteractive(): Signal<boolean> { return this._isInteractive; }
   @Input() set isInteractive(v: boolean) { this._isInteractive.set(v); }
 
-  private readonly _image = signal<NgxGalleryImage | undefined>(undefined);
-  get image(): Signal<NgxGalleryImage | undefined> { return this._image; }
-  @Input() set image(v: NgxGalleryImage | undefined) { this._image.set(v); }
+  private readonly _image = signal<GalleryImage | undefined>(undefined);
+  get image(): Signal<GalleryImage | undefined> { return this._image; }
+  @Input() set image(v: GalleryImage | undefined) { this._image.set(v); }
 
   private readonly _srcset = signal<string>('');
   get srcset(): Signal<string> { return this._srcset; }

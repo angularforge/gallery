@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://angularforge.com/schemas/changelog.json",
+  "title": "PackageChangelog",
+  "description": "Structured version history for an @angularforge package.",
+  "type": "object",
+  "required": ["package", "name", "description", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "package": {
+      "type": "string",
+      "description": "Scoped npm package name, e.g. \"@angularforge/gallery\"."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable package name, e.g. \"Gallery\"."
+    },
+    "description": {
+      "type": "string",
+      "description": "One-line package description shown in the changelog UI."
+    },
+    "entries": {
+      "type": "array",
+      "description": "Release entries in reverse chronological order (latest first).",
+      "items": {
+        "type": "object",
+        "required": ["version", "date", "changes"],
+        "additionalProperties": false,
+        "properties": {
+          "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[a-zA-Z0-9.]+)?$",
+            "description": "SemVer version string, e.g. \"1.0.0\" or \"1.0.0-beta.1\"."
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "ISO 8601 release date, e.g. \"2026-06-01\"."
+          },
+          "changes": {
+            "type": "object",
+            "description": "Categorised list of changes. All categories are optional.",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "properties": {
+              "added":         { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+              "changed":       { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+              "deprecated":    { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+              "removed":       { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+              "fixed":         { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+              "security":      { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+              "documentation": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+            }
+          }
+        }
+      }
+    }
+  }
+}

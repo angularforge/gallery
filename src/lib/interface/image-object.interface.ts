@@ -1,5 +1,5 @@
-import { NgxGalleryImage } from "./ngxGalleryImage.interface";
+import { GalleryImage } from "./gallery-image.interface";
 
-export interface LightboxImage extends NgxGalleryImage {
+export interface LightboxImage extends GalleryImage {
   index: number;
 }

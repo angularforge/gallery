@@ -1,22 +1,22 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxGalleryComponent } from './ngx-gallery.component';
+import { GalleryComponent } from './gallery.component';
 import { IconService } from './services';
 
-describe('NgxGalleryComponent iconFamily option (zoneless)', () => {
-  let fixture: ComponentFixture<NgxGalleryComponent>;
+describe('GalleryComponent iconFamily option (zoneless)', () => {
+  let fixture: ComponentFixture<GalleryComponent>;
   let icons: IconService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgxGalleryComponent],
+      imports: [GalleryComponent],
       providers: [provideZonelessChangeDetection()],
     }).compileComponents();
 
     icons = TestBed.inject(IconService);
 
-    fixture = TestBed.createComponent(NgxGalleryComponent);
+    fixture = TestBed.createComponent(GalleryComponent);
     fixture.componentRef.setInput('options', { iconFamily: 'heroicons' });
     await fixture.whenStable();
   });

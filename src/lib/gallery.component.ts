@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, Input, Output, Signal, signal, EventEmitter } from '@angular/core';
 import { provideIcons } from '@ng-icons/core';
 
-import { defaultCustomStyles, defaultDialogShareOptions, defaultNgxGalleryImage, defaultOptions, Distributions, GALLERY_ICONS } from './utils';
-import { DialogShareOptions, NgxGalleryImage, NgxGalleryOptions } from './interface';
+import { defaultCustomStyles, defaultDialogShareOptions, defaultGalleryImage, defaultOptions, Distributions, GALLERY_ICONS } from './utils';
+import { DialogShareOptions, GalleryImage, GalleryOptions } from './interface';
 import { GridTemplate } from './types';
-import { GalleryComponent } from './components';
+import { GalleryComponent as GalleryGridComponent } from './components';
 import { TranslationService, SupportedLang, IconService } from './services';
 import { Style } from './schema';
 import { ONE_HUNDRED, ZERO } from './constants';
@@ -12,31 +12,31 @@ import { ONE_HUNDRED, ZERO } from './constants';
 
 @Component({
   selector: 'ngx-gallery',
-  imports: [GalleryComponent],
-  templateUrl: './ngx-gallery.component.html',
-  styleUrls: ['./ngx-gallery.component.scss'],
+  imports: [GalleryGridComponent],
+  templateUrl: './gallery.component.html',
+  styleUrls: ['./gallery.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   // Register the gallery's icons once here so every child `<ng-icon>` can resolve them.
   providers: [provideIcons(GALLERY_ICONS)],
 })
-export class NgxGalleryComponent {
+export class GalleryComponent {
   readonly startGalleryItems = signal(ZERO);
   readonly maxGalleryItems = signal(ONE_HUNDRED);
 
-  private readonly _galleryImages = signal<NgxGalleryImage[]>(defaultNgxGalleryImage);
-  get galleryImages(): Signal<NgxGalleryImage[]> { return this._galleryImages; }
-  @Input() set galleryImages(value: NgxGalleryImage[]) {
+  private readonly _galleryImages = signal<GalleryImage[]>(defaultGalleryImage);
+  get galleryImages(): Signal<GalleryImage[]> { return this._galleryImages; }
+  @Input() set galleryImages(value: GalleryImage[]) {
     this._galleryImages.set(
       value?.length > ZERO
         ? value.slice(this.startGalleryItems(), this.maxGalleryItems())
-        : defaultNgxGalleryImage
+        : defaultGalleryImage
     );
   }
 
-  private readonly _options = signal<NgxGalleryOptions>(defaultOptions);
-  get options(): Signal<NgxGalleryOptions> { return this._options; }
-  @Input() set options(value: NgxGalleryOptions) {
+  private readonly _options = signal<GalleryOptions>(defaultOptions);
+  get options(): Signal<GalleryOptions> { return this._options; }
+  @Input() set options(value: GalleryOptions) {
     this._options.set(
       value && Object.keys(value).length > ZERO
         ? { ...defaultOptions, ...value, infinityLoop: false }

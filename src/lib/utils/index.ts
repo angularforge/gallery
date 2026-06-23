@@ -1,5 +1,5 @@
 export { defaultDialogShareOptions } from './defaultDialogShareOptions.utils'
-export { defaultNgxGalleryImage } from './defaultNgxGalleryImage.utils'
+export { defaultGalleryImage } from './default-gallery-image.utils'
 export { defaultCustomStyles } from './defaultCustomStyles.utils'
 export { defaultOptions } from './defaultOptions.utils'
 export { Distributions } from './distribution.utils'
