@@ -1,4 +1,4 @@
-e<div align="center">
+<div align="center">
 
   <h1>@angularforge/gallery</h1>
   <p>A feature-rich, accessible Angular image gallery library built with **Angular 22 Signals**, **OnPush change detection**, and **standalone components**. Supports lightbox, full-gallery, keyboard navigation, social sharing, and multi-layout grid distributions.</p>
