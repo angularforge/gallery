@@ -1,4 +1,5 @@
-<div align="center">
+e<div align="center">
+
   <h1>@angularforge/gallery</h1>
   <p>A feature-rich, accessible Angular image gallery library built with **Angular 22 Signals**, **OnPush change detection**, and **standalone components**. Supports lightbox, full-gallery, keyboard navigation, social sharing, and multi-layout grid distributions.</p>
 
@@ -172,8 +173,8 @@ Add the package to your `content` globs in `tailwind.config.js`:
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/**/*.{html,ts}',
-    './node_modules/@angularforge/gallery/fesm2022/*.mjs', // 👈 scan the library bundle
+    "./src/**/*.{html,ts}",
+    "./node_modules/@angularforge/gallery/fesm2022/*.mjs", // 👈 scan the library bundle
   ],
 };
 ```
@@ -184,7 +185,7 @@ v4 is configured from your CSS entry point with the `@source` directive (no JS c
 
 ```css
 /* styles.css */
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* 👇 scan the library bundle so its utility classes are generated */
 @source '../node_modules/@angularforge/gallery/fesm2022/*.mjs';
@@ -212,7 +213,7 @@ build is configured for.**
 
   ```css
   /* styles.css (Tailwind v4) */
-  @import 'tailwindcss';
+  @import "tailwindcss";
   @custom-variant dark (&:where(.dark, .dark *));
   ```
 
@@ -224,13 +225,13 @@ The gallery's surfaces read their colors from CSS custom properties, so you can 
 match your project's palette by overriding a few variables — no `::ng-deep` or `!important`
 needed. The defaults reproduce the built‑in light/dark look:
 
-| Token | Default (light) | Default (dark) | Used by |
-| --- | --- | --- | --- |
-| `--ngx-gallery-surface` / `--ngx-gallery-surface-dark` | `#ffffff` | `#111827` | dialog / full‑gallery / header / toast backgrounds |
-| `--ngx-gallery-text` / `--ngx-gallery-text-dark` | `#111827` | `#f3f4f6` | primary text & icons |
-| `--ngx-gallery-muted` / `--ngx-gallery-muted-dark` | `#6b7280` | `#9ca3af` | secondary text (description) |
-| `--ngx-gallery-border` / `--ngx-gallery-border-dark` | `#e5e7eb` | `#374151` | borders |
-| `--ngx-gallery-hover` / `--ngx-gallery-hover-dark` | `#f3f4f6` | `rgb(255 255 255 / .1)` | hover backgrounds |
+| Token                                                  | Default (light) | Default (dark)          | Used by                                            |
+| ------------------------------------------------------ | --------------- | ----------------------- | -------------------------------------------------- |
+| `--ngx-gallery-surface` / `--ngx-gallery-surface-dark` | `#ffffff`       | `#111827`               | dialog / full‑gallery / header / toast backgrounds |
+| `--ngx-gallery-text` / `--ngx-gallery-text-dark`       | `#111827`       | `#f3f4f6`               | primary text & icons                               |
+| `--ngx-gallery-muted` / `--ngx-gallery-muted-dark`     | `#6b7280`       | `#9ca3af`               | secondary text (description)                       |
+| `--ngx-gallery-border` / `--ngx-gallery-border-dark`   | `#e5e7eb`       | `#374151`               | borders                                            |
+| `--ngx-gallery-hover` / `--ngx-gallery-hover-dark`     | `#f3f4f6`       | `rgb(255 255 255 / .1)` | hover backgrounds                                  |
 
 Override them wherever the gallery is mounted (or globally on `:root`). Only set what you
 need — usually just the dark surface to match your app's background:
@@ -257,7 +258,7 @@ switched between **three families** via the `iconFamily` option:
 
 ```typescript
 options: NgxGalleryOptions = {
-  iconFamily: 'lucide', // 'heroicons' (default) | 'lucide' | 'bootstrap'
+  iconFamily: "lucide", // 'heroicons' (default) | 'lucide' | 'bootstrap'
 };
 ```
 
@@ -918,6 +919,7 @@ If this library saved you time, consider buying me a coffee:
 ---
 
 ## License
+
 MIT © [AngularForge](https://github.com/angularforge)
 
 ---
