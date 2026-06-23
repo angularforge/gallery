@@ -31,6 +31,38 @@
 
 ---
 
+## Playground
+
+Explore and customize the gallery in real time using the interactive [Playground](https://angularforge.com/playground/gallery).
+
+<img src="https://i.imgur.com/6bJ4JCE.png" width="100%" style="border-radius: 16px" />
+
+## Features
+
+**Devices Views**
+
+**Vertical Orientation**
+
+<div align="center" style="display:flex; justify-content:space-between; align-items:end;">
+
+<img src="https://i.imgur.com/Asju3n3.png" width="60%" />
+<img src="https://i.imgur.com/XNOFmo8.png" width="20%" />
+<img src="https://i.imgur.com/LolakCO.png" width="10%" height="20%" />
+
+</div>
+
+<br/>
+
+**Horizontal Orientation**
+
+<div align="center" style="display:flex; justify-content:space-between; align-items:end;">
+
+<img src="https://i.imgur.com/eH3lLC2.png" width="60%" />
+<img src="https://i.imgur.com/DcN8rAv.png" width="20%" />
+<img src="https://i.imgur.com/iX6Olxl.png" width="10%" height="20%" />
+
+</div>
+
 ## Table of Contents
 
 - [Features](#features)
