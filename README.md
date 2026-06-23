@@ -36,7 +36,7 @@
 
 Explore and customize the gallery in real time using the interactive [Playground](https://angularforge.com/playground/gallery).
 
-<img src="https://i.imgur.com/6bJ4JCE.png" width="100%" style="border-radius: 16px" />
+<img src="https://i.imgur.com/tOHTSkx.png" width="100%"/>
 
 ## Features
 
